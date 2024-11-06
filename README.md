@@ -26,14 +26,17 @@ https://github.com/ValveSoftware/GameNetworkingSockets
 
    
 ## Development History
-FLORENCE_Template-For_Server (PRIVATE)
+FLORENCE_Template-For_Server
 https://github.com/OpenFSD/FLORENCE_Template-For_Server
 
-FLORENCE_Cpp_SudoCode_in_Csharp (PRIVATE)
+FLORENCE_Cpp_SudoCode_in_Csharp
 https://github.com/OpenFSD/FLORENCE_Cpp_SudoCode_in_Csharp
 
-FLORENCE_TestBench_SERVER_cpp (PUBLIC)
+FLORENCE_TestBench_SERVER_cpp
 https://github.com/OpenFSD/FLORENCE_TestBench_SERVER_cpp
 
-FLORENCE_Server_Cpp (PRIVATE)
+FLORENCE_Server_Cpp
 https://github.com/OpenFSD/FLORENCE_Server_Cpp
+
+FLORENCE_Server_CMAKE
+https://github.com/OpenFSD/FLORENCE_Server_CMAKE
