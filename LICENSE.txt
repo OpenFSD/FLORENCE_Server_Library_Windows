@@ -3,7 +3,7 @@ Copyright (c) 2022 - 2024 Brenton James Maddocks BEng(CompSys).  All rights rese
 Redistribution and use in source and binary forms, with or without
 modification, are not permitted. All provisions require expressed 
 written consent from Brenton James Maddocks BEng(CompSys), via 
-"Legelowes@gmail.com". Outcomes of expressed consent provided must
+"Jasper.Assembly@icloud.com". Outcomes of expressed consent provided must
 ensure the following conditions are met:
 
 1. Redistributions of source code must retain the above copyright notice, this
