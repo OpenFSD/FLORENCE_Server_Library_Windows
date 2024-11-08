@@ -1,25 +1,27 @@
 #pragma once
-//#include "Algorithms.h"
-//#include "Data.h"
-//#include "Execute.h"
-//#include "Global.h"
+#include "Algorithms.h"
+#include "Data.h"
+#include "Execute.h"
+#include "Global.h"
 
-class Server
+namespace FLORENCE
 {
-public:
-    Server();
-    virtual ~Server();
-    class Algorithms* get_Algorithms();
-    class Data* get_Data();
-    class Execute* get_Execute();
-    class Global* get_Global();
+    class Server
+    {
+    public:
+        Server();
+        virtual ~Server();
+        class Algorithms* get_Algorithms();
+        class Data* get_Data();
+        class Execute* get_Execute();
+        class Global* get_Global();
 
-protected:
+    protected:
 
-private:
-    class Algorithms* ptr_Algorithms;
-    class Data* ptr_Data;
-    class Execute* ptr_Execute;
-    class Global* ptr_Global;
-};
-
+    private:
+        class Algorithms* ptr_Algorithms;
+        class Data* ptr_Data;
+        class Execute* ptr_Execute;
+        class Global* ptr_Global;
+    };
+}

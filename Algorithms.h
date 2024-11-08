@@ -1,8 +1,8 @@
 #pragma once
 #include <array>
-//#include "Concurrent.h"
-// "ListenRespond.h"
-//#include "user_files/Praise0_Algorithm.h"
+#include "Concurrent.h"
+#include "ListenRespond.h"
+#include "user_files/Praise0_Algorithm.h"
 
 namespace FLORENCE
 {
