@@ -11,12 +11,12 @@ namespace FLORENCE
     public:
         Algorithms(unsigned char* ptr_NumberOfImplementedCores);
         virtual ~Algorithms();
-        class Concurrent* get_Concurren_Array(unsigned char concurrent_coreId);
-        class ListenRespond* get_ListenRespond();
+        class Concurrent* Get_Concurren_Array(unsigned char concurrent_coreId);
+        class ListenRespond* Get_ListenRespond();
 
 //===
 //===
-        class Praise0_Algorithm* get_Praise0_Algorithm();
+        class Praise0_Algorithm* Get_Praise0_Algorithm();
 //===
 //===
 

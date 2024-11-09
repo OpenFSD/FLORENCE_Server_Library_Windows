@@ -19,14 +19,14 @@ namespace FLORENCE
             unsigned char* ptr_MyNumImplementedCores
         );
         virtual ~Execute();
-        void initialise_Control(
+        void Initialise_Control(
             unsigned char* ptr_MyNumImplementedCores,
             class Global* ptr_Global
         );
-        void initialise_Threads();
-        class Control_Of_Execute* get_Control_Of_Execute();
-        class LaunchConcurrency* get_LaunchConcurrency();
-        class WriteEnable* get_WriteEnable();
+        void Initialise_Threads(FLORENCE::Server* ptr_Server);
+        class Control_Of_Execute* Get_Control_Of_Execute();
+        class LaunchConcurrency* Get_LaunchConcurrency();
+        class WriteEnable* Get_WriteEnable();
 
     protected:
 

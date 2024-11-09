@@ -15,7 +15,7 @@
 #include "Input.h"
 #include "LaunchConcurrency.h"
 #include "Output.h"
-#include "user_files/Praise0_Input.h"
+#include "Praise0_Input.h"
 #include "WriteEnable.h"
 
 namespace FLORENCE
@@ -25,8 +25,8 @@ namespace FLORENCE
     public:
         ListenRespond();
         virtual ~ListenRespond();
-        void initialise_Control();
-        static void thread_IO_ListenDistribute(
+        void Initialise_Control();
+        static void Thread_IO_ListenDistribute(
             unsigned char coreId,
             unsigned char* ptr_MyNumImplementedCores,
             class Concurrent* ptr_Concurrent,
@@ -48,7 +48,7 @@ namespace FLORENCE
             class WriteEnable* ptr_WriteEnable
         );
 
-        class Control_Of_ListenRespond* get_Control_Of_ListenRespond();
+        class Control_Of_ListenRespond* Get_Control_Of_ListenRespond();
 
     protected:
 

@@ -161,6 +161,8 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="Server.h" />
     <ClInclude Include="user_files\Praise0_Algorithm.h" />
+    <ClInclude Include="user_files\Praise0_Input.h" />
+    <ClInclude Include="user_files\Praise0_Output.h" />
     <ClInclude Include="WriteEnable.h" />
   </ItemGroup>
   <ItemGroup>
@@ -191,6 +193,8 @@
     </ClCompile>
     <ClCompile Include="Server.cpp" />
     <ClCompile Include="user_files\Praise0_Algorithm.cpp" />
+    <ClCompile Include="user_files\Praise0_Input.cpp" />
+    <ClCompile Include="user_files\Praise0_Output.cpp" />
     <ClCompile Include="WriteEnable.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

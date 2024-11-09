@@ -11,55 +11,55 @@ namespace FLORENCE
             unsigned char* ptr_MyNumImplementedCores
         );
         ~Control_Of_WriteEnable();
-        void writeEnable_Activate(
+        void WriteEnable_Activate(
             unsigned char* ptr_coreId,
             FLORENCE::Global* ptr_Global,
             unsigned char* ptr_MyNumImplementedCores
         );
-        void writeEnable_SortQue(
+        void WriteEnable_SortQue(
             unsigned char* ptr_MyNumImplementedCores,
             FLORENCE::Global* ptr_Global
         );
-        void writeEnable_Request(
+        void WriteEnable_Request(
             unsigned char* ptr_coreId,
             unsigned char* ptr_MyNumImplementedCores,
             FLORENCE::Global* ptr_Global
         );
-        void writeQue_Update(
+        void WriteQue_Update(
             unsigned char* ptr_MyNumImplementedCores
         );
 
-        unsigned char* get_coreIdForWritePraiseIndex();
-        int* get_count_WriteActive(unsigned char* ptr_coreId);
-        int* get_count_WriteIdle(unsigned char* ptr_coreId);
-        int* get_count_WriteWait(unsigned char* ptr_coreId);
-        unsigned char* getFlag_CoreId_WriteEnable();
-        unsigned char* get_new_coreIdForWritePraiseIndex();
-        unsigned char* get_que_CoreToWrite(unsigned char* ptr_coreId);
+        unsigned char* Get_coreIdForWritePraiseIndex();
+        int* Get_count_WriteActive(unsigned char* ptr_coreId);
+        int* Get_count_WriteIdle(unsigned char* ptr_coreId);
+        int* Get_count_WriteWait(unsigned char* ptr_coreId);
+        unsigned char* GetFlag_CoreId_WriteEnable();
+        unsigned char* Get_new_coreIdForWritePraiseIndex();
+        unsigned char* Get_que_CoreToWrite(unsigned char* ptr_coreId);
 
-        void set_count_WriteActive(unsigned char* ptr_coreId, int value);
-        void set_count_WriteIdle(unsigned char* ptr_coreId, int value);
-        void set_count_WriteWait(unsigned char* ptr_coreId, int value);
-        void setFlag_readWrite_Open(bool value);
-        void setFlag_writeState(unsigned char* ptr_coreId, unsigned char index, bool value);
-        void set_new_coreIdForWritePraiseIndex(unsigned char value);
-        void set_que_CoreToWrite(unsigned char* index, unsigned char value);
+        void Set_count_WriteActive(unsigned char* ptr_coreId, int value);
+        void Set_count_WriteIdle(unsigned char* ptr_coreId, int value);
+        void Set_count_WriteWait(unsigned char* ptr_coreId, int value);
+        void SetFlag_readWrite_Open(bool value);
+        void SetFlag_writeState(unsigned char* ptr_coreId, unsigned char index, bool value);
+        void Set_new_coreIdForWritePraiseIndex(unsigned char value);
+        void Set_que_CoreToWrite(unsigned char* index, unsigned char value);
 
     protected:
 
     private:
-        void dynamicStagger(
+        void DynamicStagger(
             unsigned char* ptr_coreId
         );
-        void writeEnable_ShiftQueValues(
+        void WriteEnable_ShiftQueValues(
             unsigned char* concurrent_CoreId_A,
             unsigned char* concurrent_CoreId_B
         );
 
-        bool getFlag_readWrite_Open();
-        bool getFlag_writeState(unsigned char* ptr_coreId, unsigned char index);
+        bool GetFlag_readWrite_Open();
+        bool GetFlag_writeState(unsigned char* ptr_coreId, unsigned char index);
 
-        void set_coreIdForWritePraiseIndex(unsigned char value);
+        void Set_coreIdForWritePraiseIndex(unsigned char value);
 
         static unsigned char* ptr_coreId_For_WritePraise_Index;
         static int* ptr_count_CoreId_WriteActive[4];//NUMBER OF CORES

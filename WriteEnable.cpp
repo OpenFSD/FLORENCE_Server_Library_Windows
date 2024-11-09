@@ -15,7 +15,7 @@ namespace FLORENCE
         delete this->ptr_Control_Of_WriteEnable;
     }
 
-    void WriteEnable::initialise_Control(
+    void WriteEnable::Initialise_Control(
         class FLORENCE::Global* ptr_Global,
         unsigned char* ptr_MyNumImplementedCores
     )
@@ -24,7 +24,7 @@ namespace FLORENCE
         while (this->ptr_Control_Of_WriteEnable == NULL) { /* wait untill created */ }
     }
 
-    void WriteEnable::write_End(
+    void WriteEnable::Write_End(
         class Control_Of_WriteEnable* ptr_Control_Of_WriteEnable,
         unsigned char* ptr_coreId,
         unsigned char* ptr_MyNumImplementedCores,
@@ -33,49 +33,49 @@ namespace FLORENCE
     {
         for (unsigned char index = 0; index < 2; index++)
         {
-            ptr_Control_Of_WriteEnable->setFlag_writeState(ptr_coreId, index, ptr_Global->getConst_Write_IDLE(index));
+            ptr_Control_Of_WriteEnable->SetFlag_writeState(ptr_coreId, index, ptr_Global->GetConst_Write_IDLE(index));
         }
-        ptr_Control_Of_WriteEnable->set_new_coreIdForWritePraiseIndex(*ptr_Control_Of_WriteEnable->get_coreIdForWritePraiseIndex() + 1);
-        if (int(*ptr_Control_Of_WriteEnable->get_new_coreIdForWritePraiseIndex()) == 3)
+        ptr_Control_Of_WriteEnable->Set_new_coreIdForWritePraiseIndex(*ptr_Control_Of_WriteEnable->Get_coreIdForWritePraiseIndex() + 1);
+        if (int(*ptr_Control_Of_WriteEnable->Get_new_coreIdForWritePraiseIndex()) == 3)
         {
-            ptr_Control_Of_WriteEnable->set_new_coreIdForWritePraiseIndex(0);
+            ptr_Control_Of_WriteEnable->Set_new_coreIdForWritePraiseIndex(0);
         }
-        ptr_Control_Of_WriteEnable->writeQue_Update(
+        ptr_Control_Of_WriteEnable->WriteQue_Update(
             ptr_MyNumImplementedCores
         );
-        ptr_Control_Of_WriteEnable->writeEnable_SortQue(
+        ptr_Control_Of_WriteEnable->WriteEnable_SortQue(
             ptr_MyNumImplementedCores,
             ptr_Global
         );
-        ptr_Control_Of_WriteEnable->setFlag_readWrite_Open(false);
+        ptr_Control_Of_WriteEnable->SetFlag_readWrite_Open(false);
     }
-    void WriteEnable::write_Start(
+    void WriteEnable::Write_Start(
         class Control_Of_WriteEnable* ptr_Control_Of_WriteEnable,
         unsigned char* ptr_coreId,
         unsigned char* ptr_MyNumImplementedCores,
         class FLORENCE::Global* ptr_Global
     )
     {
-        ptr_Control_Of_WriteEnable->writeEnable_Request(
+        ptr_Control_Of_WriteEnable->WriteEnable_Request(
             ptr_coreId,
             ptr_MyNumImplementedCores,
             ptr_Global
         );
-        ptr_Control_Of_WriteEnable->writeQue_Update(
+        ptr_Control_Of_WriteEnable->WriteQue_Update(
             ptr_MyNumImplementedCores
         );
-        ptr_Control_Of_WriteEnable->writeEnable_SortQue(
+        ptr_Control_Of_WriteEnable->WriteEnable_SortQue(
             ptr_MyNumImplementedCores,
             ptr_Global
         );
-        ptr_Control_Of_WriteEnable->writeEnable_Activate(
+        ptr_Control_Of_WriteEnable->WriteEnable_Activate(
             ptr_coreId,
             ptr_Global,
             ptr_MyNumImplementedCores
         );
     }
 
-    class Control_Of_WriteEnable* WriteEnable::get_Control_Of_WriteEnable()
+    class Control_Of_WriteEnable* WriteEnable::Get_Control_Of_WriteEnable()
     {
         return this->ptr_Control_Of_WriteEnable;
     }

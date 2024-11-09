@@ -20,7 +20,7 @@ namespace FLORENCE
 
 	}
 
-	bool Control_Of_Execute::getFlag_SystemInitialised(unsigned char* ptr_MyNumImplementedCores)
+	bool Control_Of_Execute::GetFlag_SystemInitialised(unsigned char* ptr_MyNumImplementedCores)
 	{
 		for (int index = 0; index < *ptr_MyNumImplementedCores; index++)
 		{
@@ -33,18 +33,18 @@ namespace FLORENCE
 		return this->flag_SystemInitialised;
 	}
 
-	bool Control_Of_Execute::getFlag_ThreadInitialised(unsigned char coreId)
+	bool Control_Of_Execute::GetFlag_ThreadInitialised(unsigned char coreId)
 	{
 		return this->flag_ThreadInitialised[coreId];
 	}
 
-	void Control_Of_Execute::setConditionCodeOfThisThreadedCore(unsigned char coreId)
+	void Control_Of_Execute::SetConditionCodeOfThisThreadedCore(unsigned char coreId)
 	{
 		//Todo
-		setFlag_ThreadInitialised(coreId);
+		SetFlag_ThreadInitialised(coreId);
 	}
 
-	void Control_Of_Execute::setFlag_ThreadInitialised(unsigned char coreId)
+	void Control_Of_Execute::SetFlag_ThreadInitialised(unsigned char coreId)
 	{
 		this->flag_ThreadInitialised[coreId] = false;
 	}

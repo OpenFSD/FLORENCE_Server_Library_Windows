@@ -9,5 +9,10 @@
 
 // add headers that you want to pre-compile here
 #include "framework.h"
+#include "Server.h"
+#include "Algorithms.h"
+#include "Data.h"
+#include "Execute.h"
+#include "Global.h"
 
 #endif //PCH_H

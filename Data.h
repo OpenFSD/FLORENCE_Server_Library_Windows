@@ -16,19 +16,19 @@ namespace FLORENCE
     public:
         Data(unsigned char* ptr_NumberOfImplementedCores);
         virtual ~Data();
-        void initialise_Control();
-        class Control_Of_Data* get_Control_Of_Data();
-        class Output* get_DistributeBuffer();
-        class Input* get_InputRefferenceOfCore(unsigned char concurrent_coreId);
-        class Output* get_OutputRefferenceOfCore(unsigned char concurrent_coreId);
-        std::vector<class Input*>* get_StackOfInputPraise();
-        std::vector<class Output*>* get_StackOfDistributeBuffer();
-        class Input* get_PraiseBuffer();
+        void Initialise_Control();
+        class Control_Of_Data* Get_Control_Of_Data();
+        class Output* Get_DistributeBuffer();
+        class Input* Get_InputRefferenceOfCore(unsigned char concurrent_coreId);
+        class Output* Get_OutputRefferenceOfCore(unsigned char concurrent_coreId);
+        std::vector<class Input*>* Get_StackOfInputPraise();
+        std::vector<class Output*>* Get_StackOfDistributeBuffer();
+        class Input* Get_PraiseBuffer();
 
-        void set_DistributeBuffer(class Output* value_Output);
-        void set_InputRefferenceOfCore(unsigned char concurrent_coreId, class Input* value_Input);
-        void set_OutputRefferenceOfCore(unsigned char concurrent_coreId, class Output* value_Output);
-        void set_PraiseBuffer(class Input* value_Input);
+        void Set_DistributeBuffer(class Output* value_Output);
+        void Set_InputRefferenceOfCore(unsigned char concurrent_coreId, class Input* value_Input);
+        void Set_OutputRefferenceOfCore(unsigned char concurrent_coreId, class Output* value_Output);
+        void Set_PraiseBuffer(class Input* value_Input);
 
     protected:
 

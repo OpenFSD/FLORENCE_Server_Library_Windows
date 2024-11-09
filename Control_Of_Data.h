@@ -10,33 +10,33 @@ namespace FLORENCE
     public:
         Control_Of_Data();
         virtual ~Control_Of_Data();
-        void popFromStackOfInputPraises(
+        void PopFromStackOfInputPraises(
             class Input* referenceForCore,
             std::vector<class Input*>* ptr_inputStack
         );
-        void popFromStackOfOutput(
+        void PopFromStackOfOutput(
             class Output* distributeBuffer,
             std::vector<class Output*>* ptr_outputStack
         );
-        void pushToStackOfInputPraises(
+        void PushToStackOfInputPraises(
             std::vector<class Input*>* ptr_InputStack,
             class Input* ptr_PraiseBuffer
         );
-        void pushToStackOfOutput(
+        void PushToStackOfOutput(
             std::vector<class Output*>* ptr_outputStack,
             class Output* ptr_referenceForCore
         );
 
-        bool getFlag_InputStackLoaded();
-        bool getFlag_OutputStackLoaded();
+        bool GetFlag_InputStackLoaded();
+        bool GetFlag_OutputStackLoaded();
 
-        void setFlag_InputStackLoaded(bool value);
-        void setFlag_OutputStackLoaded(bool value);
+        void SetFlag_InputStackLoaded(bool value);
+        void SetFlag_OutputStackLoaded(bool value);
 
     protected:
 
     private:
-        void load_Input_Subset_For_PraiseEventId(int* ptr_praiseEventId);
+        void Load_Input_Subset_For_PraiseEventId(int* ptr_praiseEventId);
 
         static bool flag_InputStackLoaded;
         static bool flag_OutputStackLoaded;

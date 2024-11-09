@@ -11,7 +11,7 @@ namespace FLORENCE
     public:
         Control_Of_Input();
         virtual ~Control_Of_Input();
-        void selectSet_Input_Subset_For_Given_PraiseEventId(
+        void SelectSet_Input_Subset_For_Given_PraiseEventId(
             int* ptr_praiseEventId,
             FLORENCE::Server* ptr_Server
         );

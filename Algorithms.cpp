@@ -16,21 +16,20 @@ namespace FLORENCE
     Algorithms::Algorithms(unsigned char* ptr_NumberOfImplementedCores)
     {
         this->ptr_New_Concurrent = new Concurrent();
-        this->ptr_New_Concurrent->initialise_Control();
+        this->ptr_New_Concurrent->Initialise_Control();
 
-        * ptr_Concurrent[3] = {
-            this->ptr_New_Concurrent,
-            this->ptr_New_Concurrent,
-            this->ptr_New_Concurrent
-        };//NUMBER OF CONCURRENT CORES
+        this->ptr_Concurrent[3] = new Concurrent[3];//NUMBER OF CONCURRENT CORES
+        for (unsigned char index=0; index < *ptr_NumberOfImplementedCores-1; index++)
+        {
+            this->ptr_Concurrent[index] = this->ptr_New_Concurrent;
+        }
         delete this->ptr_New_Concurrent;
-
         this->ptr_Concurrent_Array = this->ptr_Concurrent;
         while (this->ptr_Concurrent_Array == NULL) { /* wait untill class constructed */ }
 
         this->ptr_ListenRespond = new ListenRespond();
         while (this->ptr_ListenRespond == NULL) { /* wait untill class constructed */ }
-        this->ptr_ListenRespond->initialise_Control();
+        this->ptr_ListenRespond->Initialise_Control();
 //===
 //===
         this->ptr_Praise0_Algorithms = new Praise0_Algorithm();
@@ -50,19 +49,19 @@ namespace FLORENCE
         delete this->ptr_Praise0_Algorithms;
     }
 
-    class Concurrent* Algorithms::get_Concurren_Array(unsigned char concurrent_coreId)
+    class Concurrent* Algorithms::Get_Concurren_Array(unsigned char concurrent_coreId)
     {
         return this->ptr_Concurrent[concurrent_coreId];
     }
 
-    class ListenRespond* Algorithms::get_ListenRespond()
+    class ListenRespond* Algorithms::Get_ListenRespond()
     {
         return this->ptr_ListenRespond;
     }
 
 //===
 //===
-    class Praise0_Algorithm* Algorithms::get_Praise0_Algorithm()
+    class Praise0_Algorithm* Algorithms::Get_Praise0_Algorithm()
     {
         return this->ptr_Praise0_Algorithms;
     }

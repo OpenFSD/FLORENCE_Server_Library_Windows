@@ -12,7 +12,7 @@ namespace FLORENCE
     public:
         Control_Of_Concurrent();
         virtual ~Control_Of_Concurrent();
-        void selectSet_Algorithm_Subset_For_Given_PraiseEventId(
+        void SelectSet_Algorithm_Subset_For_Given_PraiseEventId(
             int* ptr_praiseEventId,
             FLORENCE::Server* ptr_server,
             unsigned char concurrent_coreId

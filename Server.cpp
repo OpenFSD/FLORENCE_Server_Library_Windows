@@ -11,19 +11,19 @@ namespace FLORENCE
 
     Server::Server()
     {
-        this->ptr_Global = new Global();
+        this->ptr_Global = new FLORENCE::Global();
         while (this->ptr_Global == NULL) { /* wait untill created */ }
 
-        this->ptr_Algorithms = new Algorithms(ptr_Global->get_NumCores());
+        this->ptr_Algorithms = new FLORENCE::Algorithms(this->ptr_Global->Get_NumCores());
         while (this->ptr_Algorithms == NULL) { /* wait untill created */ }
 
-        this->ptr_Data = new Data(ptr_Global->get_NumCores());
+        this->ptr_Data = new FLORENCE::Data(this->ptr_Global->Get_NumCores());
         while (this->ptr_Data == NULL) { /* wait untill created */ }
-        this->ptr_Data->initialise_Control();
+        this->ptr_Data->Initialise_Control();
 
-        this->ptr_Execute = new Execute(ptr_Global, ptr_Global->get_NumCores());
+        this->ptr_Execute = new FLORENCE::Execute(this->ptr_Global, ptr_Global->Get_NumCores());
         while (this->ptr_Execute == NULL) { /* wait untill created */ }
-        this->ptr_Execute->initialise_Control(ptr_Global->get_NumCores(), ptr_Global);
+        this->ptr_Execute->Initialise_Control(this->Get_Global()->Get_NumCores(), this->ptr_Global);
     }
 
     Server::~Server()
@@ -34,22 +34,23 @@ namespace FLORENCE
         delete this->ptr_Execute;
     }
 
-    class Algorithms* Server::get_Algorithms()
+    class Algorithms* Server::Get_Algorithms()
     {
         return this->ptr_Algorithms;
     }
 
-    class Data* Server::get_Data()
+    class Data* Server::Get_Data()
     {
         return this->ptr_Data;
     }
 
-    class Execute* Server::get_Execute()
+    class Execute* Server::Get_Execute()
     {
         return this->ptr_Execute;
     }
 
-    class Global* Server::get_Global()
+    class Global* Server::Get_Global()
     {
         return this->ptr_Global;
     }
+}

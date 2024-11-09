@@ -13,23 +13,23 @@ namespace FLORENCE
         delete this->ptr_Control_Of_LaunchConcurrency;
     }
 
-    void LaunchConcurrency::concurrent_Thread_Start(
+    void LaunchConcurrency::Concurrent_Thread_Start(
         class Control_Of_LaunchConcurrency* ptr_Control_Of_LaunchConcurrency,
         unsigned char* ptr_concurrent_CoreId,
         class Global* ptr_Global,
         unsigned char* ptr_NumImplementedCores
     )
     {
-        ptr_Control_Of_LaunchConcurrency->launchEnable_Request(ptr_concurrent_CoreId, ptr_Global);
-        ptr_Control_Of_LaunchConcurrency->launchQue_Update(ptr_NumImplementedCores);
-        ptr_Control_Of_LaunchConcurrency->launchEnable_SortQue(ptr_Global, ptr_NumImplementedCores);
-        ptr_Control_Of_LaunchConcurrency->launchEnable_Activate(ptr_Global);
-        ptr_Control_Of_LaunchConcurrency->launchQue_Update(ptr_NumImplementedCores);
-        ptr_Control_Of_LaunchConcurrency->launchEnable_SortQue(ptr_Global, ptr_NumImplementedCores);
-        ptr_Control_Of_LaunchConcurrency->setFlag_PraisingLaunch(false);
+        ptr_Control_Of_LaunchConcurrency->LaunchEnable_Request(ptr_concurrent_CoreId, ptr_Global);
+        ptr_Control_Of_LaunchConcurrency->LaunchQue_Update(ptr_NumImplementedCores);
+        ptr_Control_Of_LaunchConcurrency->LaunchEnable_SortQue(ptr_Global, ptr_NumImplementedCores);
+        ptr_Control_Of_LaunchConcurrency->LaunchEnable_Activate(ptr_Global);
+        ptr_Control_Of_LaunchConcurrency->LaunchQue_Update(ptr_NumImplementedCores);
+        ptr_Control_Of_LaunchConcurrency->LaunchEnable_SortQue(ptr_Global, ptr_NumImplementedCores);
+        ptr_Control_Of_LaunchConcurrency->SetFlag_PraisingLaunch(false);
     }
 
-    void LaunchConcurrency::initialise_Control(
+    void LaunchConcurrency::Initialise_Control(
         class Global* ptr_Global,
         unsigned char* ptr_MyNumImplementedCores
     )
@@ -38,32 +38,32 @@ namespace FLORENCE
         while (this->ptr_Control_Of_LaunchConcurrency == NULL) { /* wait untill created */ }
     }
 
-    void LaunchConcurrency::thread_End(
+    void LaunchConcurrency::Thread_End(
         Control_Of_LaunchConcurrency* ptr_Control_Of_LaunchConcurrency,
         unsigned char* ptr_concurrent_CoreId,
         class Global* ptr_Global
     )
     {
-        while (ptr_Control_Of_LaunchConcurrency->getFlag_PraisingLaunch() == true)
+        while (ptr_Control_Of_LaunchConcurrency->GetFlag_PraisingLaunch() == true)
         {
 
         }
-        ptr_Control_Of_LaunchConcurrency->setFlag_PraisingLaunch(true);
-        ptr_Control_Of_LaunchConcurrency->set_concurrent_CoreId_Index(*ptr_Control_Of_LaunchConcurrency->get_new_concurrent_CoreId_Index());
-        if (*ptr_Control_Of_LaunchConcurrency->get_concurrent_CoreId_Index() == *ptr_concurrent_CoreId)
+        ptr_Control_Of_LaunchConcurrency->SetFlag_PraisingLaunch(true);
+        ptr_Control_Of_LaunchConcurrency->Set_concurrent_CoreId_Index(*ptr_Control_Of_LaunchConcurrency->Get_new_concurrent_CoreId_Index());
+        if (*ptr_Control_Of_LaunchConcurrency->Get_concurrent_CoreId_Index() == *ptr_concurrent_CoreId)
         {
-            ptr_Control_Of_LaunchConcurrency->setFlag_ConcurrentCoreState(ptr_concurrent_CoreId, ptr_Global->getConst_Core_IDLE());
+            ptr_Control_Of_LaunchConcurrency->SetFlag_ConcurrentCoreState(ptr_concurrent_CoreId, ptr_Global->GetConst_Core_IDLE());
         }
         else
         {
-            ptr_Control_Of_LaunchConcurrency->set_new_concurrent_CoreId_Index(*ptr_Control_Of_LaunchConcurrency->get_concurrent_CoreId_Index() + 1);
+            ptr_Control_Of_LaunchConcurrency->Set_new_concurrent_CoreId_Index(*ptr_Control_Of_LaunchConcurrency->Get_concurrent_CoreId_Index() + 1);
 
-            if (*ptr_Control_Of_LaunchConcurrency->get_new_concurrent_CoreId_Index() == 3)//NUMBER OF CONCURNT CORES
+            if (*ptr_Control_Of_LaunchConcurrency->Get_new_concurrent_CoreId_Index() == 3)//NUMBER OF CONCURNT CORES
             {
-                ptr_Control_Of_LaunchConcurrency->set_new_concurrent_CoreId_Index(0);
+                ptr_Control_Of_LaunchConcurrency->Set_new_concurrent_CoreId_Index(0);
             }
-            ptr_Control_Of_LaunchConcurrency->setFlag_PraisingLaunch(false);
-            thread_End(
+            ptr_Control_Of_LaunchConcurrency->SetFlag_PraisingLaunch(false);
+            Thread_End(
                 ptr_Control_Of_LaunchConcurrency,
                 ptr_concurrent_CoreId,
                 ptr_Global
@@ -71,7 +71,7 @@ namespace FLORENCE
         }
     }
 
-    Control_Of_LaunchConcurrency* LaunchConcurrency::get_Control_Of_LaunchConcurrency()
+    Control_Of_LaunchConcurrency* LaunchConcurrency::Get_Control_Of_LaunchConcurrency()
     {
         return this->ptr_Control_Of_LaunchConcurrency;
     }

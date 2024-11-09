@@ -13,7 +13,7 @@ namespace FLORENCE
 
 	}
 
-	void Control_Of_Output::selectSet_Output_Subset_For_Given_PraiseEventId(
+	void Control_Of_Output::SelectSet_Output_Subset_For_Given_PraiseEventId(
 		int* ptr_praiseEventId,
 		FLORENCE::Server* ptr_Server,
 		unsigned char concurrent_coreId
@@ -21,17 +21,17 @@ namespace FLORENCE
 	{
 		switch (*ptr_praiseEventId)
 		{
-			//===
-			//===
+//===
+//===
 		case 0:
-			ptr_Server->get_Data()->get_OutputRefferenceOfCore(concurrent_coreId)->set_OutputBuffer_Subset(new class FLORENCE::Praise0_Output());
+			ptr_Server->Get_Data()->Get_OutputRefferenceOfCore(concurrent_coreId)->Set_OutputBuffer_Subset(new class FLORENCE::Praise0_Output());
 			break;
 
 		case 1:
 
 			break;
-			//===
-			//===
+//===
+//===
 		}
 	}
 }

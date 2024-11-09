@@ -76,9 +76,9 @@ namespace FLORENCE
 
         //===
         //===
-        this->prt_Praise0_Input = new Data::Praise0_Input();
+        this->prt_Praise0_Input = new Praise0_Input();
         while (this->prt_Praise0_Input == NULL) { /* wait untill created */ }
-        this->prt_Praise0_Outut = new Data::Praise0_Output();
+        this->prt_Praise0_Outut = new Praise0_Output();
         while (this->prt_Praise0_Outut == NULL) { /* wait untill created */ }
         //===
         //===
@@ -100,63 +100,63 @@ namespace FLORENCE
         delete ptr_PraiseBuffer;
     }
 
-    void Data::initialise_Control()
+    void Data::Initialise_Control()
     {
-        this->ptr_Control_Of_Data = new Data::Control_Of_Data();
+        this->ptr_Control_Of_Data = new Control_Of_Data();
         while (this->ptr_Control_Of_Data == NULL) { /* wait untill created */ }
     }
 
-    class Control_Of_Data* Data::get_Control_Of_Data()
+    class Control_Of_Data* Data::Get_Control_Of_Data()
     {
         return this->ptr_Control_Of_Data;
     }
 
-    class Output* Data::get_DistributeBuffer()
+    class Output* Data::Get_DistributeBuffer()
     {
         return this->ptr_DistributeBuffer;
     }
 
-    class Input* Data::get_InputRefferenceOfCore(unsigned char concurrent_coreId)
+    class Input* Data::Get_InputRefferenceOfCore(unsigned char concurrent_coreId)
     {
         return this->ptr_InputRefferenceOfCore_Array[concurrent_coreId];
     }
 
-    class Output* Data::get_OutputRefferenceOfCore(unsigned char concurrent_coreId)
+    class Output* Data::Get_OutputRefferenceOfCore(unsigned char concurrent_coreId)
     {
         return this->ptr_OutputRefferenceOfCore_Array[concurrent_coreId];
     }
 
-    std::vector<class Input*>* Data::get_StackOfInputPraise()
+    std::vector<class Input*>* Data::Get_StackOfInputPraise()
     {
         return this->ptr_StackOfInputPraise;
     }
 
-    std::vector<class Output*>* Data::get_StackOfDistributeBuffer()
+    std::vector<class Output*>* Data::Get_StackOfDistributeBuffer()
     {
         return this->ptr_StackOfDistributeBuffer;
     }
 
-    class Input* Data::get_PraiseBuffer()
+    class Input* Data::Get_PraiseBuffer()
     {
         return this->ptr_PraiseBuffer;
     }
 
-    void Data::set_DistributeBuffer(Data::Output* value_Output)
+    void Data::Set_DistributeBuffer(Output* value_Output)
     {
         this->ptr_DistributeBuffer = value_Output;
     }
 
-    void Data::set_InputRefferenceOfCore(unsigned char concurrent_coreId, Data::Input* value_Input)
+    void Data::Set_InputRefferenceOfCore(unsigned char concurrent_coreId, Input* value_Input)
     {
         this->ptr_InputRefferenceOfCore_Array[concurrent_coreId] = value_Input;
     }
 
-    void Data::set_OutputRefferenceOfCore(unsigned char concurrent_coreId, Data::Output* value_Output)
+    void Data::Set_OutputRefferenceOfCore(unsigned char concurrent_coreId, Output* value_Output)
     {
         this->ptr_OutputRefferenceOfCore_Array[concurrent_coreId] = value_Output;
     }
 
-    void Data::set_PraiseBuffer(Data::Input* value_Input)
+    void Data::Set_PraiseBuffer(Input* value_Input)
     {
         this->ptr_PraiseBuffer = value_Input;
     }

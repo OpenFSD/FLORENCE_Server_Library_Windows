@@ -10,7 +10,7 @@ namespace FLORENCE
     public:
         Control_Of_Output();
         virtual ~Control_Of_Output();
-        void selectSet_Output_Subset_For_Given_PraiseEventId(
+        void SelectSet_Output_Subset_For_Given_PraiseEventId(
             int* ptr_praiseEventId,
             FLORENCE::Server* ptr_Server,
             unsigned char concurrent_coreId

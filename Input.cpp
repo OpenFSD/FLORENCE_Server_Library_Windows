@@ -24,33 +24,33 @@ namespace FLORENCE
         delete ptr_in_praiseEventId;
     }
 
-    void Input::initialise_Control()
+    void Input::Initialise_Control()
     {
         this->ptr_Control_Of_Input = new Control_Of_Input();
         while (this->ptr_Control_Of_Input == NULL) { /* wait untill created */ }
     }
 
-    class Control_Of_Input* Input::get_Control_Of_Input()
+    class Control_Of_Input* Input::Get_Control_Of_Input()
     {
         return this->ptr_Control_Of_Input;
     }
 
-    int* Input::getPraiseEventId()
+    int* Input::GetPraiseEventId()
     {
         return this->ptr_in_praiseEventId;
     }
 
-    class Praise0_Input* Input::get_InputBufferSubset()
+    class Praise0_Input* Input::Get_InputBufferSubset()
     {
         return this->ptr_praiseInputBuffer_Subset;
     }
 
-    void Input::set_InputBuffer_SubSet(Praise0_Input* value)
+    void Input::Set_InputBuffer_SubSet(Praise0_Input* value)
     {
         this->ptr_praiseInputBuffer_Subset = value;
     }
 
-    void Input::setPraiseEventId(int value)
+    void Input::SetPraiseEventId(int value)
     {
         this->ptr_in_praiseEventId = &value;
     }

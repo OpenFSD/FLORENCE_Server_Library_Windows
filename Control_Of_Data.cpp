@@ -16,7 +16,7 @@ namespace FLORENCE
 
     }
 
-    void Control_Of_Data::load_Input_Subset_For_PraiseEventId(int* ptr_praiseEventId)
+    void Control_Of_Data::Load_Input_Subset_For_PraiseEventId(int* ptr_praiseEventId)
     {
         switch (*ptr_praiseEventId)
         {
@@ -27,7 +27,7 @@ namespace FLORENCE
         }
     }
 
-    void Control_Of_Data::popFromStackOfInputPraises(
+    void Control_Of_Data::PopFromStackOfInputPraises(
         FLORENCE::Input* referenceForCore,
         std::vector<FLORENCE::Input*>* ptr_inputStack
     )
@@ -38,59 +38,59 @@ namespace FLORENCE
         ptr_inputStack->erase(ptr_inputStack->begin() + 1);
     }
 
-    void Control_Of_Data::popFromStackOfOutput(
+    void Control_Of_Data::PopFromStackOfOutput(
         FLORENCE::Output* distributeBuffer,
         std::vector<FLORENCE::Output*>* ptr_outputStack
     )
     {
-        distributeBuffer->setPraiseEventId(*ptr_outputStack->at(1)->getPraiseEventId());
-        distributeBuffer->set_OutputBuffer_Subset(ptr_outputStack->at(1)->get_OutputBuffer_Subset());
+        distributeBuffer->SetPraiseEventId(*ptr_outputStack->at(1)->GetPraiseEventId());
+        distributeBuffer->Set_OutputBuffer_Subset(ptr_outputStack->at(1)->Get_OutputBuffer_Subset());
         ptr_outputStack->erase(ptr_outputStack->begin() + 1);
     }
 
-    void Control_Of_Data::pushToStackOfInputPraises(
+    void Control_Of_Data::PushToStackOfInputPraises(
         std::vector<FLORENCE::Input*>* ptr_InputStack,
         FLORENCE::Input* ptr_PraiseBuffer
     )
     {
         ptr_InputStack->push_back(ptr_InputStack->at(0));
-        ptr_InputStack->at((ptr_InputStack->size() - 1))->setPraiseEventId(
-            *ptr_PraiseBuffer->getPraiseEventId()
+        ptr_InputStack->at((ptr_InputStack->size() - 1))->SetPraiseEventId(
+            *ptr_PraiseBuffer->GetPraiseEventId()
         );
-        ptr_InputStack->at((ptr_InputStack->size() - 1))->set_InputBuffer_SubSet(
-            ptr_PraiseBuffer->get_InputBufferSubset()
+        ptr_InputStack->at((ptr_InputStack->size() - 1))->Set_InputBuffer_SubSet(
+            ptr_PraiseBuffer->Set_InputBufferSubset()
         );
     }
 
-    void Control_Of_Data::pushToStackOfOutput(
+    void Control_Of_Data::PushToStackOfOutput(
         std::vector<FLORENCE::Output*>* ptr_outputStack,
         FLORENCE::Output* ptr_referenceForCore
     )
     {
         ptr_outputStack->push_back(ptr_outputStack->at(0));
-        ptr_outputStack->at((ptr_outputStack->size() - 1))->setPraiseEventId(
-            *ptr_referenceForCore->getPraiseEventId()
+        ptr_outputStack->at((ptr_outputStack->size() - 1))->SetPraiseEventId(
+            *ptr_referenceForCore->GetPraiseEventId()
         );
-        ptr_outputStack->at((ptr_outputStack->size() - 1))->set_OutputBuffer_Subset(
-            ptr_referenceForCore->get_OutputBuffer_Subset()
+        ptr_outputStack->at((ptr_outputStack->size() - 1))->Set_OutputBuffer_Subset(
+            ptr_referenceForCore->Get_OutputBuffer_Subset()
         );
     }
 
-    bool Control_Of_Data::getFlag_InputStackLoaded()
+    bool Control_Of_Data::GetFlag_InputStackLoaded()
     {
         return flag_InputStackLoaded;
     }
-    bool Control_Of_Data::getFlag_OutputStackLoaded()
+    bool Control_Of_Data::GetFlag_OutputStackLoaded()
     {
         return this->flag_OutputStackLoaded;
     }
 
 
-    void Control_Of_Data::setFlag_InputStackLoaded(bool value)
+    void Control_Of_Data::SetFlag_InputStackLoaded(bool value)
     {
         this->flag_InputStackLoaded = value;
     }
-    void Control_Of_Data::setFlag_OutputStackLoaded(bool value)
+    void Control_Of_Data::SetFlag_OutputStackLoaded(bool value)
     {
         this->flag_OutputStackLoaded = value;
     }

@@ -3,7 +3,6 @@
 
 namespace FLORENCE
 {
-
     bool Control_Of_LaunchConcurrency::flag_ConcurrentCoreState[3] = { false, false, false };//NUMBER OF CONCURRENT CORES
     bool Control_Of_LaunchConcurrency::flag_praisingLaunch = false;
     unsigned char* Control_Of_LaunchConcurrency::ptr_concurrent_CoreId_Index = NULL;
@@ -17,8 +16,8 @@ namespace FLORENCE
         unsigned char* ptr_NumImplementedCores
     )
     {
-        this->flag_praisingLaunch = false;
         this->flag_ConcurrentCoreState[3] = new bool[3];//NUMBER OF CONCURNT CORES
+        this->flag_praisingLaunch = new bool(false);
         this->ptr_concurrent_CoreId_Index = new unsigned char(0);
         this->ptr_count_LaunchActive_For[3] = new int[3];//NUMBER OF CONCURNT CORES
         this->ptr_count_LaunchIdle_For[3] = new int[3];//NUMBER OF CONCURNT CORES
@@ -26,7 +25,7 @@ namespace FLORENCE
         this->ptr_que_CoreToLaunch[3] = new unsigned char[3];//NUMBER OF CONCURNT CORES
         for (unsigned char index = 0; index < *ptr_NumImplementedCores-1; index++)
         {
-            this->flag_ConcurrentCoreState[index] = ptr_Global->getConst_Core_IDLE();
+            this->flag_ConcurrentCoreState[index] = ptr_Global->GetConst_Core_IDLE();
             this->ptr_count_LaunchActive_For[index] = int(0);
             this->ptr_count_LaunchIdle_For[index] = int(0);
             this->ptr_que_CoreToLaunch[index] = &index;
@@ -45,48 +44,48 @@ namespace FLORENCE
         delete this->ptr_new_concurrent_CoreId_Index;
     }
 
-    void Control_Of_LaunchConcurrency::launchEnable_Activate(
+    void Control_Of_LaunchConcurrency::LaunchEnable_Activate(
         FLORENCE::Global* ptr_Global
     )
     {
-        setFlag_ConcurrentCoreState(getFlag_CoreId_Of_CoreToLaunch(), ptr_Global->getConst_Core_ACTIVE());
+        SetFlag_ConcurrentCoreState(GetFlag_CoreId_Of_CoreToLaunch(), ptr_Global->GetConst_Core_ACTIVE());
     }
 
-    void Control_Of_LaunchConcurrency::launchEnable_Request(
+    void Control_Of_LaunchConcurrency::LaunchEnable_Request(
         unsigned char* concurrent_CoreId,
         FLORENCE::Global* ptr_Global
     )
     {
-        while (getFlag_ConcurrentCoreState(getFlag_CoreId_Of_CoreToLaunch()) != ptr_Global->getConst_Core_IDLE())
+        while (GetFlag_ConcurrentCoreState(GetFlag_CoreId_Of_CoreToLaunch()) != ptr_Global->GetConst_Core_IDLE())
         {
 
         }
-        while (getFlag_PraisingLaunch() == true)
+        while (GetFlag_PraisingLaunch() == true)
         {
-            dynamicStagger(concurrent_CoreId);
+            DynamicStagger(concurrent_CoreId);
         }
-        setFlag_PraisingLaunch(true);
-        set_concurrent_CoreId_Index(*get_new_concurrent_CoreId_Index());
-        if (*get_concurrent_CoreId_Index() == *concurrent_CoreId)
+        SetFlag_PraisingLaunch(true);
+        Set_concurrent_CoreId_Index(*Get_new_concurrent_CoreId_Index());
+        if (*Get_concurrent_CoreId_Index() == *concurrent_CoreId)
         {
 
         }
         else
         {
-            set_new_concurrent_CoreId_Index(*get_concurrent_CoreId_Index() + 1);
-            if (*get_concurrent_CoreId_Index() == 3)
+            Set_new_concurrent_CoreId_Index(*Get_concurrent_CoreId_Index() + 1);
+            if (*Get_concurrent_CoreId_Index() == 3)
             {
-                set_new_concurrent_CoreId_Index(0);
+                Set_new_concurrent_CoreId_Index(0);
             }
-            setFlag_PraisingLaunch(false);
-            launchEnable_Request(
+            SetFlag_PraisingLaunch(false);
+            LaunchEnable_Request(
                 concurrent_CoreId,
                 ptr_Global
             );
         }
     }
 
-    void Control_Of_LaunchConcurrency::launchEnable_SortQue(
+    void Control_Of_LaunchConcurrency::LaunchEnable_SortQue(
         FLORENCE::Global* ptr_Global,
         unsigned char* ptr_NumImplementedCores
     )
@@ -95,108 +94,108 @@ namespace FLORENCE
         {
             for (unsigned char index_B = index_A + 1; index_B < *ptr_NumImplementedCores - 1; index_B++)
             {
-                if (getFlag_ConcurrentCoreState(get_que_CoreToLaunch(&index_A)) == ptr_Global->getConst_Core_ACTIVE())
+                if (GetFlag_ConcurrentCoreState(Get_que_CoreToLaunch(&index_A)) == ptr_Global->GetConst_Core_ACTIVE())
                 {
-                    if (getFlag_ConcurrentCoreState(get_que_CoreToLaunch(&index_B)) == ptr_Global->getConst_Core_IDLE())
+                    if (GetFlag_ConcurrentCoreState(Get_que_CoreToLaunch(&index_B)) == ptr_Global->GetConst_Core_IDLE())
                     {
-                        launchEnable_ShiftQueValues(&index_A, &index_B);
+                        LaunchEnable_ShiftQueValues(&index_A, &index_B);
                     }
-                    else if (getFlag_ConcurrentCoreState(get_que_CoreToLaunch(&index_B)) == ptr_Global->getConst_Core_ACTIVE())
+                    else if (GetFlag_ConcurrentCoreState(Get_que_CoreToLaunch(&index_B)) == ptr_Global->GetConst_Core_ACTIVE())
                     {
-                        if (get_count_LaunchActive_For(&index_A) > get_count_LaunchActive_For(&index_B))
+                        if (Get_count_LaunchActive_For(&index_A) > Get_count_LaunchActive_For(&index_B))
                         {
-                            launchEnable_ShiftQueValues(&index_A, &index_B);
+                            LaunchEnable_ShiftQueValues(&index_A, &index_B);
                         }
                     }
                 }
-                else if (getFlag_ConcurrentCoreState(get_que_CoreToLaunch(&index_A)) == ptr_Global->getConst_Core_IDLE())
+                else if (GetFlag_ConcurrentCoreState(Get_que_CoreToLaunch(&index_A)) == ptr_Global->GetConst_Core_IDLE())
 
-                    if (getFlag_ConcurrentCoreState(get_que_CoreToLaunch(&index_B)) == ptr_Global->getConst_Core_IDLE())
+                    if (GetFlag_ConcurrentCoreState(Get_que_CoreToLaunch(&index_B)) == ptr_Global->GetConst_Core_IDLE())
                     {
-                        if (get_count_LaunchIdle_For(&index_A) < get_count_LaunchIdle_For(&index_B))
+                        if (Get_count_LaunchIdle_For(&index_A) < Get_count_LaunchIdle_For(&index_B))
                         {
-                            launchEnable_ShiftQueValues(&index_A, &index_B);
+                            LaunchEnable_ShiftQueValues(&index_A, &index_B);
                         }
                     }
             }
         }
     }
 
-    void Control_Of_LaunchConcurrency::launchQue_Update(
+    void Control_Of_LaunchConcurrency::LaunchQue_Update(
         unsigned char* ptr_NumImplementedCores
     )
     {
         for (unsigned char index = 0; index < *ptr_NumImplementedCores; index++)
         {
-            switch (getFlag_ConcurrentCoreState(&index))
+            switch (GetFlag_ConcurrentCoreState(&index))
             {
             case false:
             {
-                set_count_LaunchActive_For(&index, 0);
-                set_count_LaunchIdle_For(&index, *get_count_LaunchIdle_For(&index) + 1);
+                Set_count_LaunchActive_For(&index, 0);
+                Set_count_LaunchIdle_For(&index, *Get_count_LaunchIdle_For(&index) + 1);
                 break;
             }
             case true:
             {
-                set_count_LaunchActive_For(&index, *get_count_LaunchActive_For(&index) + 1);
-                set_count_LaunchIdle_For(&index, 0);
+                Set_count_LaunchActive_For(&index, *Get_count_LaunchActive_For(&index) + 1);
+                Set_count_LaunchIdle_For(&index, 0);
                 break;
             }
             }
         }
     }
 
-    unsigned char* Control_Of_LaunchConcurrency::get_concurrent_CoreId_Index()
+    unsigned char* Control_Of_LaunchConcurrency::Get_concurrent_CoreId_Index()
     {
         return ptr_concurrent_CoreId_Index;
     }
 
-    unsigned char* Control_Of_LaunchConcurrency::get_coreId_To_Launch()
+    unsigned char* Control_Of_LaunchConcurrency::Get_coreId_To_Launch()
     {
         return ptr_que_CoreToLaunch[0];
     }
 
-    bool Control_Of_LaunchConcurrency::getFlag_ConcurrentCoreState(unsigned char* concurrent_CoreId)
+    bool Control_Of_LaunchConcurrency::GetFlag_ConcurrentCoreState(unsigned char* concurrent_CoreId)
     {
         return flag_ConcurrentCoreState[*concurrent_CoreId];
     }
 
-    void Control_Of_LaunchConcurrency::setFlag_PraisingLaunch(bool value)
+    void Control_Of_LaunchConcurrency::SetFlag_PraisingLaunch(bool value)
     {
         flag_praisingLaunch = value;
     }
 
-    unsigned char* Control_Of_LaunchConcurrency::get_new_concurrent_CoreId_Index()
+    unsigned char* Control_Of_LaunchConcurrency::Get_new_concurrent_CoreId_Index()
     {
         return ptr_new_concurrent_CoreId_Index;
     }
 
-    void Control_Of_LaunchConcurrency::set_concurrent_CoreId_Index(unsigned char value)
+    void Control_Of_LaunchConcurrency::Set_concurrent_CoreId_Index(unsigned char value)
     {
         ptr_concurrent_CoreId_Index = &value;
     }
 
-    void Control_Of_LaunchConcurrency::setFlag_ConcurrentCoreState(unsigned char* concurrent_CoreId, bool value)
+    void Control_Of_LaunchConcurrency::SetFlag_ConcurrentCoreState(unsigned char* concurrent_CoreId, bool value)
     {
         flag_ConcurrentCoreState[*concurrent_CoreId] = &value;
     }
 
 
-    bool Control_Of_LaunchConcurrency::getFlag_PraisingLaunch()
+    bool Control_Of_LaunchConcurrency::GetFlag_PraisingLaunch()
     {
         return flag_praisingLaunch;
     }
 
-    void Control_Of_LaunchConcurrency::set_new_concurrent_CoreId_Index(unsigned char value)
+    void Control_Of_LaunchConcurrency::Set_new_concurrent_CoreId_Index(unsigned char value)
     {
         ptr_new_concurrent_CoreId_Index = &value;
     }
 
-    void Control_Of_LaunchConcurrency::dynamicStagger(
+    void Control_Of_LaunchConcurrency::DynamicStagger(
         unsigned char* ptr_coreId
     )
     {
-        if (*get_concurrent_CoreId_Index() == *ptr_coreId)
+        if (*Get_concurrent_CoreId_Index() == *ptr_coreId)
         {
             //exit early
         }
@@ -212,59 +211,59 @@ namespace FLORENCE
         }
     }
 
-    void Control_Of_LaunchConcurrency::launchEnable_ShiftQueValues(
+    void Control_Of_LaunchConcurrency::LaunchEnable_ShiftQueValues(
         unsigned char* concurrent_CoreId_A,
         unsigned char* concurrent_CoreId_B
     )
     {
         int* ptr_temp_Int;// = new int(0);
-        ptr_temp_Int = get_count_LaunchActive_For(concurrent_CoreId_A);
-        set_count_LaunchActive_For(concurrent_CoreId_A, *get_count_LaunchActive_For(concurrent_CoreId_B));
-        set_count_LaunchActive_For(concurrent_CoreId_B, *ptr_temp_Int);
+        ptr_temp_Int = Get_count_LaunchActive_For(concurrent_CoreId_A);
+        Set_count_LaunchActive_For(concurrent_CoreId_A, *Get_count_LaunchActive_For(concurrent_CoreId_B));
+        Set_count_LaunchActive_For(concurrent_CoreId_B, *ptr_temp_Int);
 
-        ptr_temp_Int = get_count_LaunchIdle_For(concurrent_CoreId_A);
-        set_count_LaunchIdle_For(concurrent_CoreId_A, *get_count_LaunchIdle_For(concurrent_CoreId_B));
-        set_count_LaunchIdle_For(concurrent_CoreId_B, *ptr_temp_Int);
+        ptr_temp_Int = Get_count_LaunchIdle_For(concurrent_CoreId_A);
+        Set_count_LaunchIdle_For(concurrent_CoreId_A, *Get_count_LaunchIdle_For(concurrent_CoreId_B));
+        Set_count_LaunchIdle_For(concurrent_CoreId_B, *ptr_temp_Int);
         delete ptr_temp_Int;
 
         unsigned char* ptr_temp_UnnsignedChar;// = new unsigned char(0);
-        ptr_temp_UnnsignedChar = get_que_CoreToLaunch(concurrent_CoreId_A);
-        set_que_CoreToLaunch(concurrent_CoreId_A, *get_que_CoreToLaunch(concurrent_CoreId_B));
-        set_que_CoreToLaunch(concurrent_CoreId_B, *ptr_temp_UnnsignedChar);
+        ptr_temp_UnnsignedChar = Get_que_CoreToLaunch(concurrent_CoreId_A);
+        Set_que_CoreToLaunch(concurrent_CoreId_A, *Get_que_CoreToLaunch(concurrent_CoreId_B));
+        Set_que_CoreToLaunch(concurrent_CoreId_B, *ptr_temp_UnnsignedChar);
         delete ptr_temp_UnnsignedChar;
     }
 
-    int* Control_Of_LaunchConcurrency::get_count_LaunchActive_For(unsigned char* concurrent_CoreId)
+    int* Control_Of_LaunchConcurrency::Get_count_LaunchActive_For(unsigned char* concurrent_CoreId)
     {
         return ptr_count_LaunchActive_For[*concurrent_CoreId];
     }
 
-    int* Control_Of_LaunchConcurrency::get_count_LaunchIdle_For(unsigned char* concurrent_CoreId)
+    int* Control_Of_LaunchConcurrency::Get_count_LaunchIdle_For(unsigned char* concurrent_CoreId)
     {
         return ptr_count_LaunchIdle_For[*concurrent_CoreId];
     }
 
-    unsigned char* Control_Of_LaunchConcurrency::getFlag_CoreId_Of_CoreToLaunch()
+    unsigned char* Control_Of_LaunchConcurrency::GetFlag_CoreId_Of_CoreToLaunch()
     {
         return ptr_que_CoreToLaunch[0];
     }
 
-    unsigned char* Control_Of_LaunchConcurrency::get_que_CoreToLaunch(unsigned char* index)
+    unsigned char* Control_Of_LaunchConcurrency::Get_que_CoreToLaunch(unsigned char* index)
     {
         return ptr_que_CoreToLaunch[*index];
     }
 
-    void Control_Of_LaunchConcurrency::set_count_LaunchActive_For(unsigned char* concurrent_CoreId, int value)
+    void Control_Of_LaunchConcurrency::Set_count_LaunchActive_For(unsigned char* concurrent_CoreId, int value)
     {
         ptr_count_LaunchActive_For[*concurrent_CoreId] = &value;
     }
 
-    void Control_Of_LaunchConcurrency::set_count_LaunchIdle_For(unsigned char* concurrent_CoreId, int value)
+    void Control_Of_LaunchConcurrency::Set_count_LaunchIdle_For(unsigned char* concurrent_CoreId, int value)
     {
         ptr_count_LaunchIdle_For[*concurrent_CoreId] = &value;
     }
 
-    void Control_Of_LaunchConcurrency::set_que_CoreToLaunch(unsigned char* concurrent_CoreId, unsigned char value)
+    void Control_Of_LaunchConcurrency::Set_que_CoreToLaunch(unsigned char* concurrent_CoreId, unsigned char value)
     {
         ptr_que_CoreToLaunch[*concurrent_CoreId] = &value;
     }

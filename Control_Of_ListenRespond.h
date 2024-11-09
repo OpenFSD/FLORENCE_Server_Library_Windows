@@ -8,8 +8,8 @@ namespace FLORENCE
     public:
         Control_Of_ListenRespond();
         ~Control_Of_ListenRespond();
-        bool getFlag_IO_ThreadState();
-        void setFlag_IO_ThreadState(bool value);
+        bool GetFlag_IO_ThreadState();
+        void SetFlag_IO_ThreadState(bool value);
 
     protected:
 

@@ -14,7 +14,7 @@ namespace FLORENCE
 
 	}
 
-	void Control_Of_Concurrent::selectSet_Algorithm_Subset_For_Given_PraiseEventId(
+	void Control_Of_Concurrent::SelectSet_Algorithm_Subset_For_Given_PraiseEventId(
 		int* ptr_praiseEventId,
 		FLORENCE::Server* ptr_server,
 		unsigned char concurrent_coreId
@@ -22,17 +22,17 @@ namespace FLORENCE
 	{
 		switch (*ptr_praiseEventId)
 		{
-			//===
-			//===	
+//===
+//===	
 		case 0:
-			ptr_server->get_Algorithms()->get_Concurren_Array(concurrent_coreId)->set_Algorithm_Subset(new FLORENCE::Praise0_Algorithm());
+			ptr_server->Get_Algorithms()->Get_Concurren_Array(concurrent_coreId)->Set_Algorithm_Subset(new FLORENCE::Praise0_Algorithm());
 			break;
 
 		case 1:
 			//TODO for each praise
 			break;
-			//===
-			//===	
+//===
+//===	
 		}
 	}
 }

@@ -8,12 +8,12 @@ namespace FLORENCE
     public:
         Global();
         ~Global();
-        bool getConst_Core_IDLE();
-        bool getConst_Core_ACTIVE();
-        unsigned char get_NumCores();
-        bool getConst_Write_IDLE(unsigned char index);
-        bool getConst_Write_WAIT(unsigned char index);
-        bool getConst_Write_WRITE(unsigned char index);
+        bool GetConst_Core_IDLE();
+        bool GetConst_Core_ACTIVE();
+        unsigned char* Get_NumCores();
+        bool GetConst_Write_IDLE(unsigned char index);
+        bool GetConst_Write_WAIT(unsigned char index);
+        bool GetConst_Write_WRITE(unsigned char index);
 
     protected:
 

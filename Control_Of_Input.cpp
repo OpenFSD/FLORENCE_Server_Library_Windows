@@ -13,24 +13,24 @@ namespace FLORENCE
 
 	}
 
-	void Control_Of_Input::selectSet_Input_Subset_For_Given_PraiseEventId(
+	void Control_Of_Input::SelectSet_Input_Subset_For_Given_PraiseEventId(
 		int* ptr_praiseEventId,
 		FLORENCE::Server* ptr_Server
 	)
 	{
 		switch (*ptr_praiseEventId)
 		{
-			//===
-			//===
+//===
+//===
 		case 0:
-			ptr_Server->get_Data()->get_PraiseBuffer()->set_InputBuffer_SubSet(new class FLORENCE::Praise0_Input());
+			ptr_Server->Get_Data()->Get_PraiseBuffer()->Set_InputBuffer_SubSet(new class FLORENCE::Praise0_Input());
 			break;
 
 		case 1:
 
 			break;
-			//===
-			//===
+//===
+//===
 
 		}
 	}

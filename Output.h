@@ -9,19 +9,19 @@ namespace FLORENCE
     public:
         Output();
         virtual ~Output();
-        void initialise_Control();
-        class Control_Of_Output* get_Control_Of_Output();
-        class Praise0_Output* get_OutputBuffer_Subset();//TODO CLASS T
-        int* getPraiseEventId();
+        void Initialise_Control();
+        Control_Of_Output* Get_Control_Of_Output();
+        Praise0_Output* Get_OutputBuffer_Subset();//TODO CLASS T
+        int* GetPraiseEventId();
 
-        void set_OutputBuffer_Subset(class Praise0_Output* value);
-        void setPraiseEventId(int value);
+        void Set_OutputBuffer_Subset(class Praise0_Output* value);
+        void SetPraiseEventId(int value);
 
     protected:
 
     private:
-        class Control_Of_Output* ptr_Control_Of_Output;
-        class Praise0_Output* praiseOutputBuffer_Subset;//ToDo buffer
+        Control_Of_Output* ptr_Control_Of_Output;
+        Praise0_Output* praiseOutputBuffer_Subset;//ToDo buffer
         static int* ptr_out_PraiseEventId;
     };
 }

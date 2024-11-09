@@ -11,10 +11,10 @@ namespace FLORENCE
     public:
         Server();
         virtual ~Server();
-        class Algorithms* get_Algorithms();
-        class Data* get_Data();
-        class Execute* get_Execute();
-        class Global* get_Global();
+        class Algorithms* Get_Algorithms();
+        class Data* Get_Data();
+        class Execute* Get_Execute();
+        class Global* Get_Global();
 
     protected:
 

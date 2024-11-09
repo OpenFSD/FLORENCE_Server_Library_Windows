@@ -9,13 +9,13 @@ namespace FLORENCE
     public:
         Input();
         virtual ~Input();
-        void initialise_Control();
-        class Control_Of_Input* get_Control_Of_Input();
-        class Praise0_Input* get_InputBufferSubset();//TODO CLASS T
-        int* getPraiseEventId();
+        void Initialise_Control();
+        class Control_Of_Input* Get_Control_Of_Input();
+        class Praise0_Input* Get_InputBufferSubset();//TODO CLASS T
+        int* GetPraiseEventId();
 
-        void set_InputBuffer_SubSet(class Praise0_Input* value);//TODO CLASS T
-        void setPraiseEventId(int value);
+        void Set_InputBuffer_SubSet(class Praise0_Input* value);//TODO CLASS T
+        void SetPraiseEventId(int value);
 
     protected:
 

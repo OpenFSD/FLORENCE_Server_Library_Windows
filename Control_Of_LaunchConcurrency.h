@@ -13,52 +13,52 @@ namespace FLORENCE
         );
         virtual ~Control_Of_LaunchConcurrency();
 
-        void launchEnable_Activate(
+        void LaunchEnable_Activate(
             FLORENCE::Global* ptr_Global
         );
-        void launchEnable_Request(
+        void LaunchEnable_Request(
             unsigned char* concurrent_CoreId,
             FLORENCE::Global* ptr_Global
         );
-        void launchEnable_SortQue(
+        void LaunchEnable_SortQue(
             FLORENCE::Global* ptr_Global,
             unsigned char* ptr_NumImplementedCores
         );
-        void launchQue_Update(
+        void LaunchQue_Update(
             unsigned char* ptr_NumImplementedCores
         );
 
-        unsigned char* get_concurrent_CoreId_Index();
-        unsigned char* get_coreId_To_Launch();
-        bool getFlag_ConcurrentCoreState(unsigned char* concurrent_CoreId);
-        bool getFlag_PraisingLaunch();
-        unsigned char* get_new_concurrent_CoreId_Index();
+        unsigned char* Get_concurrent_CoreId_Index();
+        unsigned char* Get_coreId_To_Launch();
+        bool GetFlag_ConcurrentCoreState(unsigned char* concurrent_CoreId);
+        bool GetFlag_PraisingLaunch();
+        unsigned char* Get_new_concurrent_CoreId_Index();
 
-        void set_concurrent_CoreId_Index(unsigned char index);
-        void setFlag_ConcurrentCoreState(unsigned char* concurrent_CoreId, bool value);
-        void setFlag_PraisingLaunch(bool value);
-        void set_new_concurrent_CoreId_Index(unsigned char index);
+        void Set_concurrent_CoreId_Index(unsigned char index);
+        void SetFlag_ConcurrentCoreState(unsigned char* concurrent_CoreId, bool value);
+        void SetFlag_PraisingLaunch(bool value);
+        void Set_new_concurrent_CoreId_Index(unsigned char index);
 
 
     protected:
 
     private:
-        void dynamicStagger(
+        void DynamicStagger(
             unsigned char* ptr_coreId
         );
-        void launchEnable_ShiftQueValues(
+        void LaunchEnable_ShiftQueValues(
             unsigned char* concurrent_CoreId_A,
             unsigned char* concurrent_CoreId_B
         );
 
-        int* get_count_LaunchActive_For(unsigned char* concurrent_CoreId);
-        int* get_count_LaunchIdle_For(unsigned char* concurrent_CoreId);
-        unsigned char* getFlag_CoreId_Of_CoreToLaunch();
-        unsigned char* get_que_CoreToLaunch(unsigned char* index);
+        int* Get_count_LaunchActive_For(unsigned char* concurrent_CoreId);
+        int* Get_count_LaunchIdle_For(unsigned char* concurrent_CoreId);
+        unsigned char* GetFlag_CoreId_Of_CoreToLaunch();
+        unsigned char* Get_que_CoreToLaunch(unsigned char* index);
 
-        void set_count_LaunchActive_For(unsigned char* concurrent_CoreId, int value);
-        void set_count_LaunchIdle_For(unsigned char* concurrent_CoreId, int value);
-        void set_que_CoreToLaunch(unsigned char* concurrent_CoreId, unsigned char value);
+        void Set_count_LaunchActive_For(unsigned char* concurrent_CoreId, int value);
+        void Set_count_LaunchIdle_For(unsigned char* concurrent_CoreId, int value);
+        void Set_que_CoreToLaunch(unsigned char* concurrent_CoreId, unsigned char value);
 
         static bool flag_praisingLaunch;
         static bool flag_ConcurrentCoreState[3];//NUMBER OF CONCURRENT CORES

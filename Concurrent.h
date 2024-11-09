@@ -24,8 +24,8 @@ namespace FLORENCE
     public:
         Concurrent();
         virtual ~Concurrent();
-        void initialise_Control();
-        static void thread_Concurrency(
+        void Initialise_Control();
+        static void Thread_Concurrency(
             unsigned char concurrent_coreId,
             unsigned char* ptr_MyNumImplementedCores,
             FLORENCE::Control_Of_Concurrent* prt_Control_Of_Concurrent,
@@ -47,16 +47,16 @@ namespace FLORENCE
             FLORENCE::WriteEnable* ptr_WriteEnable
         );
 
-        void do_Concurrent_Algorithm_For_PraiseEventId(
+        void Do_Concurrent_Algorithm_For_PraiseEventId(
             int* ptr_praiseEventId,
             Praise0_Algorithm* ptr_Algorithm_Subset,
             FLORENCE::Praise0_Input* ptr_Input_Subset,
             FLORENCE::Praise0_Output* ptr_Output_Subset
         );
-        Praise0_Algorithm* get_Algorithm_Subset();//TODO CLASS T
-        class Control_Of_Concurrent* get_Control_Of_Concurrent();
+        Praise0_Algorithm* Get_Algorithm_Subset();//TODO CLASS T
+        class Control_Of_Concurrent* Get_Control_Of_Concurrent();
 
-        void set_Algorithm_Subset(Praise0_Algorithm* value_algorithm);//TODO CLASS T
+        void Set_Algorithm_Subset(Praise0_Algorithm* value_algorithm);//TODO CLASS T
 
     protected:
 
