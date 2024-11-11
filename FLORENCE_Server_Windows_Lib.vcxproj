@@ -180,6 +180,7 @@
     <ClCompile Include="Data.cpp" />
     <ClCompile Include="Execute.cpp" />
     <ClCompile Include="FLORENCE_Server_Windows_Lib.cpp" />
+    <ClCompile Include="framework.cpp" />
     <ClCompile Include="Global.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="LaunchConcurrency.cpp" />

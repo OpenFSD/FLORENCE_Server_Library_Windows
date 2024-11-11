@@ -1,9 +1,7 @@
 #pragma once
-#include "Framework.h"
-#include "user_files/Praise0_Algorithm.h"
-#include "user_files/Praise0_Input.h"
-#include "user_files/Praise0_Output.h"
+#include "framework.h"
 #include "Server.h"
+#include "user_files/Praise0_Algorithm.h"
 
 namespace FLORENCE
 {
@@ -14,7 +12,6 @@ namespace FLORENCE
         virtual ~Control_Of_Concurrent();
         void SelectSet_Algorithm_Subset_For_Given_PraiseEventId(
             int* ptr_praiseEventId,
-            FLORENCE::Server* ptr_server,
             unsigned char concurrent_coreId
         );
 

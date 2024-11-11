@@ -1,15 +1,16 @@
 #include "pch.h"
 #include "Algorithms.h"
+#include <cstddef>
 
 namespace FLORENCE
 {
-    class Concurrent** ptr_Concurrent_Array = NULL;
-    class Concurrent* ptr_Concurrent[3] = { NULL, NULL, NULL };
-    class ListenRespond* ptr_ListenRespond = NULL;
-    class Concurrent* ptr_New_Concurrent = NULL;
+    Concurrent** ptr_Concurrent_Array = NULL;
+    Concurrent* ptr_Concurrent[3] = { NULL, NULL, NULL };
+    ListenRespond* ptr_ListenRespond = NULL;
+    Concurrent* ptr_New_Concurrent = NULL;
 //===
 //===
-    class Praise0_Algorithm* ptr_Praise0_Algorithms = NULL;
+    Praise0_Algorithm* ptr_Praise0_Algorithm = NULL;
 //===
 //===
 
@@ -32,8 +33,8 @@ namespace FLORENCE
         this->ptr_ListenRespond->Initialise_Control();
 //===
 //===
-        this->ptr_Praise0_Algorithms = new Praise0_Algorithm();
-        while (this->ptr_Praise0_Algorithms == NULL) { /* wait untill class constructed */ }
+        this->ptr_Praise0_Algorithm = new Praise0_Algorithm();
+        while (this->ptr_Praise0_Algorithm == NULL) { /* wait untill class constructed */ }
 //===
 //===
     }
@@ -46,7 +47,7 @@ namespace FLORENCE
         }
         delete this->ptr_Concurrent_Array;
         delete this->ptr_ListenRespond;
-        delete this->ptr_Praise0_Algorithms;
+        delete this->ptr_Praise0_Algorithm;
     }
 
     class Concurrent* Algorithms::Get_Concurren_Array(unsigned char concurrent_coreId)
@@ -63,7 +64,7 @@ namespace FLORENCE
 //===
     class Praise0_Algorithm* Algorithms::Get_Praise0_Algorithm()
     {
-        return this->ptr_Praise0_Algorithms;
+        return this->ptr_Praise0_Algorithm;
     }
 //===
 //===

@@ -29,7 +29,7 @@ namespace FLORENCE
         class Concurrent* ptr_New_Concurrent;
 //===
 //===
-        class Praise0_Algorithm* ptr_Praise0_Algorithms;
+        class Praise0_Algorithm* ptr_Praise0_Algorithm;
 //===
 //===
 

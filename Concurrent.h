@@ -1,4 +1,5 @@
 #pragma once
+#include "Algorithms.h"
 #include "Concurrent.h"
 #include "Control_Of_Concurrent.h"
 #include "Control_Of_Data.h"
@@ -7,7 +8,6 @@
 #include "Control_Of_Output.h"
 #include "Control_Of_WriteEnable.h"
 #include "Data.h"
-#include "Framework.h"
 #include "Global.h"
 #include "Input.h"
 #include "LaunchConcurrency.h"
@@ -28,7 +28,8 @@ namespace FLORENCE
         static void Thread_Concurrency(
             unsigned char concurrent_coreId,
             unsigned char* ptr_MyNumImplementedCores,
-            FLORENCE::Control_Of_Concurrent* prt_Control_Of_Concurrent,
+            FLORENCE::Algorithms* ptr_Algorithms,
+            FLORENCE::Control_Of_Concurrent* ptr_Control_Of_Concurrent,
             FLORENCE::Control_Of_Data* ptr_Control_Of_Data,
             FLORENCE::Control_Of_Execute* ptr_Control_Of_Execute,
             FLORENCE::Control_Of_LaunchConcurrency* ptr_Control_Of_LaunchConcurrency,

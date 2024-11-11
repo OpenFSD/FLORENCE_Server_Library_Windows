@@ -43,6 +43,8 @@ namespace FLORENCE
         FLORENCE::WriteEnable* ptr_WriteEnable
     )
     {
+        FLORENCE::Server* server = FLORENCE::framework::Get_Server();
+
         ptr_Control_Of_Execute->SetConditionCodeOfThisThreadedCore(coreId);
         while (ptr_Control_Of_Execute->GetFlag_SystemInitialised(ptr_MyNumImplementedCores) != false)
         {
@@ -56,12 +58,11 @@ namespace FLORENCE
                 ptr_MyNumImplementedCores,
                 ptr_Global
             );
-
+            
             //TODO> client praise networking accepted and captured
             ptr_Data->Get_PraiseBuffer()->SetPraiseEventId(0);//NETWORKING TODO
             ptr_Control_Of_Input->SelectSet_Input_Subset_For_Given_PraiseEventId(
-                ptr_Data->Get_PraiseBuffer()->GetPraiseEventId(),
-                ptr_Data->Get_PraiseBuffer()
+                ptr_Data->Get_PraiseBuffer()->GetPraiseEventId()                
             );
             ptr_PraiseBuffer_Subset->Set_A(new bool(false));
             ptr_PraiseBuffer_Subset->Set_B(new bool(false));
@@ -107,11 +108,11 @@ namespace FLORENCE
                 );
                 if (sizeof(ptr_Data->Get_StackOfDistributeBuffer()) < 1)
                 {
-                    ptr_Control_Of_Data->GetFlag_OutputStackLoaded(false);
+                    ptr_Control_Of_Data->SetFlag_OutputStackLoaded(false);
                 }
                 else
                 {
-                    ptr_Control_Of_Data->GetFlag_OutputStackLoaded(true);
+                    ptr_Control_Of_Data->SetFlag_OutputStackLoaded(true);
                 }
                 //TODO> server distribute networking
                 /*

@@ -1,10 +1,11 @@
 #include "pch.h"
 #include "Control_Of_Execute.h"
+#include <cstddef>
 
 namespace FLORENCE
 {
-	bool Control_Of_Execute::flag_SystemInitialised = bool(true);
-	bool Control_Of_Execute::flag_ThreadInitialised[4] = { bool(true), bool(true), bool(true), bool(true) };//NUMBER OF CORES
+	bool flag_SystemInitialised = NULL;
+	bool flag_ThreadInitialised[4] = { NULL, NULL, NULL, NULL };//NUMBER OF CORES
 
 	Control_Of_Execute::Control_Of_Execute(unsigned char* ptr_MyNumImplementedCores)
 	{

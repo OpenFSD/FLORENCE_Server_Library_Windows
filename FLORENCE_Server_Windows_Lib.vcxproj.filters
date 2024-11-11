@@ -167,5 +167,8 @@
     <ClCompile Include="user_files\Praise0_Output.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="framework.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

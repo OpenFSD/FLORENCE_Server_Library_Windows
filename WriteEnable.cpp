@@ -1,9 +1,10 @@
 #include "pch.h"
 #include "WriteEnable.h"
+#include <cstddef>
 
 namespace FLORENCE
 {
-    class Control_Of_WriteEnable* ptr_Control_Of_WriteEnable = NULL;
+    Control_Of_WriteEnable* ptr_Control_Of_WriteEnable = NULL;
 
     WriteEnable::WriteEnable()
     {
@@ -16,19 +17,19 @@ namespace FLORENCE
     }
 
     void WriteEnable::Initialise_Control(
-        class FLORENCE::Global* ptr_Global,
+        FLORENCE::Global* ptr_Global,
         unsigned char* ptr_MyNumImplementedCores
     )
     {
-        this->ptr_Control_Of_WriteEnable = new Control_Of_WriteEnable(ptr_Global, ptr_MyNumImplementedCores);
+        this->ptr_Control_Of_WriteEnable = new FLORENCE::Control_Of_WriteEnable(ptr_Global, ptr_MyNumImplementedCores);
         while (this->ptr_Control_Of_WriteEnable == NULL) { /* wait untill created */ }
     }
 
     void WriteEnable::Write_End(
-        class Control_Of_WriteEnable* ptr_Control_Of_WriteEnable,
+        FLORENCE::Control_Of_WriteEnable* ptr_Control_Of_WriteEnable,
         unsigned char* ptr_coreId,
         unsigned char* ptr_MyNumImplementedCores,
-        class FLORENCE::Global* ptr_Global
+        FLORENCE::Global* ptr_Global
     )
     {
         for (unsigned char index = 0; index < 2; index++)
@@ -50,10 +51,10 @@ namespace FLORENCE
         ptr_Control_Of_WriteEnable->SetFlag_readWrite_Open(false);
     }
     void WriteEnable::Write_Start(
-        class Control_Of_WriteEnable* ptr_Control_Of_WriteEnable,
+        Control_Of_WriteEnable* ptr_Control_Of_WriteEnable,
         unsigned char* ptr_coreId,
         unsigned char* ptr_MyNumImplementedCores,
-        class FLORENCE::Global* ptr_Global
+        FLORENCE::Global* ptr_Global
     )
     {
         ptr_Control_Of_WriteEnable->WriteEnable_Request(
@@ -75,7 +76,7 @@ namespace FLORENCE
         );
     }
 
-    class Control_Of_WriteEnable* WriteEnable::Get_Control_Of_WriteEnable()
+    Control_Of_WriteEnable* WriteEnable::Get_Control_Of_WriteEnable()
     {
         return this->ptr_Control_Of_WriteEnable;
     }

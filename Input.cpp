@@ -6,7 +6,7 @@ namespace FLORENCE
 {
     class Control_Of_Input* ptr_Control_Of_Input = NULL;
     class Praise0_Input* ptr_praiseInputBuffer_Subset = NULL;//TODO CLASS T
-    int* Input::ptr_in_praiseEventId = NULL;
+    int* ptr_in_praiseEventId = NULL;
 
     Input::Input()
     {
@@ -45,7 +45,7 @@ namespace FLORENCE
         return this->ptr_praiseInputBuffer_Subset;
     }
 
-    void Input::Set_InputBuffer_SubSet(Praise0_Input* value)
+    void Input::Set_InputBuffer_SubSet(FLORENCE::Praise0_Input* value)
     {
         this->ptr_praiseInputBuffer_Subset = value;
     }

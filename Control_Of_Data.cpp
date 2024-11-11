@@ -3,8 +3,8 @@
 
 namespace FLORENCE
 {
-    bool Control_Of_Data::flag_InputStackLoaded = false;
-    bool Control_Of_Data::flag_OutputStackLoaded = false;
+    bool flag_InputStackLoaded = false;
+    bool flag_OutputStackLoaded = false;
 
     Control_Of_Data::Control_Of_Data()
     {
@@ -33,8 +33,8 @@ namespace FLORENCE
     )
     {
         referenceForCore = ptr_inputStack->at(0);
-        referenceForCore->setPraiseEventId(*ptr_inputStack->at(1)->getPraiseEventId());
-        referenceForCore->set_InputBuffer_SubSet(ptr_inputStack->at(1)->get_InputBufferSubset());
+        referenceForCore->SetPraiseEventId(*ptr_inputStack->at(1)->GetPraiseEventId());
+        referenceForCore->Set_InputBuffer_SubSet(ptr_inputStack->at(1)->Get_InputBufferSubset());
         ptr_inputStack->erase(ptr_inputStack->begin() + 1);
     }
 
@@ -58,7 +58,7 @@ namespace FLORENCE
             *ptr_PraiseBuffer->GetPraiseEventId()
         );
         ptr_InputStack->at((ptr_InputStack->size() - 1))->Set_InputBuffer_SubSet(
-            ptr_PraiseBuffer->Set_InputBufferSubset()
+            ptr_PraiseBuffer->Get_InputBufferSubset()
         );
     }
 

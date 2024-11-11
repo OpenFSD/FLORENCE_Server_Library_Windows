@@ -14,16 +14,16 @@ namespace FLORENCE
             unsigned char* ptr_MyNumImplementedCores
         );
         void Write_End(
-            class Control_Of_WriteEnable* ptr_Control_Of_WriteEnable,
+            Control_Of_WriteEnable* ptr_Control_Of_WriteEnable,
             unsigned char* ptr_coreId,
             unsigned char* ptr_MyNumImplementedCores,
-            class Global* ptr_Global
+            Global* ptr_Global
         );
         void Write_Start(
-            class Control_Of_WriteEnable* ptr_Control_Of_WriteEnable,
+            Control_Of_WriteEnable* ptr_Control_Of_WriteEnable,
             unsigned char* ptr_coreId,
             unsigned char* ptr_MyNumImplementedCores,
-            class Global* ptr_Global
+            Global* ptr_Global
         );
 
         Control_Of_WriteEnable* Get_Control_Of_WriteEnable();
@@ -31,6 +31,6 @@ namespace FLORENCE
     protected:
 
     private:
-        class Control_Of_WriteEnable* ptr_Control_Of_WriteEnable;
+        Control_Of_WriteEnable* ptr_Control_Of_WriteEnable;
     };
 }

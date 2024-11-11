@@ -34,54 +34,53 @@ namespace FLORENCE
         }//NUMBER OF CORES
     }
 
-    void Execute::Initialise_Threads(
-        FLORENCE::Server* ptr_Server
-    )
+    void Execute::Initialise_Threads()
     {
+        FLORENCE::Server* server = FLORENCE::framework::Get_Server();
         ptr_Thread_WithCoreId[0] = new std::thread(
-            ptr_Server->Get_Algorithms()->Get_ListenRespond()->Thread_IO_ListenDistribute,
+            server->Get_Algorithms()->Get_ListenRespond()->Thread_IO_ListenDistribute,
             unsigned char(0),
-            ptr_Server->Get_Global()->Get_NumCores(),
-            ptr_Server->Get_Execute()->Get_Control_Of_Execute(),
-            ptr_Server->Get_Data()->Get_Control_Of_Data(),
-            ptr_Server->Get_Execute()->Get_LaunchConcurrency(),
-            ptr_Server->Get_Algorithms()->Get_ListenRespond()->Get_Control_Of_ListenRespond(),
-            ptr_Server->Get_Execute()->Get_WriteEnable(),
-            ptr_Server->Get_Data(),
-            ptr_Server->Get_Global(),
-            ptr_Server->Get_Data()->Get_StackOfInputPraise(),
-            ptr_Server->Get_Execute()->Get_LaunchConcurrency(),
-            ptr_Server->Get_Data()->Get_StackOfDistributeBuffer(),
-            ptr_Server->Get_Data()->Get_PraiseBuffer(),
-            ptr_Server->Get_Data()->Get_PraiseBuffer()->Get_InputBufferSubset(),
-            ptr_Server->Get_Execute()->Get_WriteEnable()
+            server->Get_Global()->Get_NumCores(),
+            server->Get_Execute()->Get_Control_Of_Execute(),
+            server->Get_Data()->Get_Control_Of_Data(),
+            server->Get_Execute()->Get_LaunchConcurrency(),
+            server->Get_Algorithms()->Get_ListenRespond()->Get_Control_Of_ListenRespond(),
+            server->Get_Execute()->Get_WriteEnable(),
+            server->Get_Data(),
+            server->Get_Global(),
+            server->Get_Data()->Get_StackOfInputPraise(),
+            server->Get_Execute()->Get_LaunchConcurrency(),
+            server->Get_Data()->Get_StackOfDistributeBuffer(),
+            server->Get_Data()->Get_PraiseBuffer(),
+            server->Get_Data()->Get_PraiseBuffer()->Get_InputBufferSubset(),
+            server->Get_Execute()->Get_WriteEnable()
         );
-        for (unsigned char index = 1; index <= *ptr_Server->Get_Global()->Get_NumCores(); index++)
+        for (unsigned char index = 1; index <= *server->Get_Global()->Get_NumCores(); index++)
         {
             ptr_Thread_WithCoreId[index] = new std::thread(
-                ptr_Server->Get_Algorithms()->Get_Concurren_Array(index)->Thread_Concurrency,
+                server->Get_Algorithms()->Get_Concurren_Array(index)->Thread_Concurrency,
                 unsigned char(index),
-                ptr_Server->Get_Global()->Get_NumCores(),
-                ptr_Server->Get_Algorithms()->Get_Concurren_Array(index),
-                ptr_Server->Get_Algorithms()->Get_Concurren_Array(index)->Get_Control_Of_Concurrent(),
-                ptr_Server->Get_Data()->Get_Control_Of_Data(),
-                ptr_Server->Get_Execute()->Get_Control_Of_Execute(),
-                ptr_Server->Get_Execute()->Get_LaunchConcurrency(),
-                ptr_Server->Get_Execute()->Get_WriteEnable(),
-                ptr_Server->Get_Data(),
-                ptr_Server->Get_Global(),
-                ptr_Server->Get_Data()->Get_PraiseBuffer(),
-                ptr_Server->Get_Data()->Get_StackOfInputPraise(),
-                ptr_Server->Get_Execute()->Get_LaunchConcurrency(),
-                ptr_Server->Get_Data()->Get_DistributeBuffer(),
-                ptr_Server->Get_Data()->Get_StackOfDistributeBuffer(),
-                ptr_Server->Get_Algorithms()->Get_Concurren_Array(index)->Get_Algorithm_Subset(),
-                ptr_Server->Get_Data()->Get_PraiseBuffer()->Get_InputBufferSubset(),
-                ptr_Server->Get_Data()->Get_DistributeBuffer()->Get_OutputBuffer_Subset(),
-                ptr_Server->Get_Execute()->Get_WriteEnable()
+                server->Get_Global()->Get_NumCores(),
+                server->Get_Algorithms()->Get_Concurren_Array(index),
+                server->Get_Algorithms()->Get_Concurren_Array(index)->Get_Control_Of_Concurrent(),
+                server->Get_Data()->Get_Control_Of_Data(),
+                server->Get_Execute()->Get_Control_Of_Execute(),
+                server->Get_Execute()->Get_LaunchConcurrency(),
+                server->Get_Execute()->Get_WriteEnable(),
+                server->Get_Data(),
+                server->Get_Global(),
+                server->Get_Data()->Get_PraiseBuffer(),
+                server->Get_Data()->Get_StackOfInputPraise(),
+                server->Get_Execute()->Get_LaunchConcurrency(),
+                server->Get_Data()->Get_DistributeBuffer(),
+                server->Get_Data()->Get_StackOfDistributeBuffer(),
+                server->Get_Algorithms()->Get_Concurren_Array(index)->Get_Algorithm_Subset(),
+                server->Get_Data()->Get_PraiseBuffer()->Get_InputBufferSubset(),
+                server->Get_Data()->Get_DistributeBuffer()->Get_OutputBuffer_Subset(),
+                server->Get_Execute()->Get_WriteEnable()
             );
         }
-        while (ptr_Server->Get_Execute()->Get_Control_Of_Execute()->GetFlag_SystemInitialised(ptr_Server->Get_Global()->Get_NumCores()) != false)
+        while (server->Get_Execute()->Get_Control_Of_Execute()->GetFlag_SystemInitialised(server->Get_Global()->Get_NumCores()) != false)
         {
 
         }

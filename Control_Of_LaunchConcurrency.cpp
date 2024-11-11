@@ -1,15 +1,16 @@
 #include "pch.h"
 #include "Control_Of_LaunchConcurrency.h"
+#include <cstddef>
 
 namespace FLORENCE
 {
-    bool Control_Of_LaunchConcurrency::flag_ConcurrentCoreState[3] = { false, false, false };//NUMBER OF CONCURRENT CORES
-    bool Control_Of_LaunchConcurrency::flag_praisingLaunch = false;
-    unsigned char* Control_Of_LaunchConcurrency::ptr_concurrent_CoreId_Index = NULL;
-    int* Control_Of_LaunchConcurrency::ptr_count_LaunchActive_For[3] = { NULL, NULL, NULL };//NUMBER OF CONCURNT CORES
-    int* Control_Of_LaunchConcurrency::ptr_count_LaunchIdle_For[3] = { NULL, NULL, NULL };//NUMBER OF CONCURNT CORES
-    unsigned char* Control_Of_LaunchConcurrency::ptr_new_concurrent_CoreId_Index = NULL;
-    unsigned char* Control_Of_LaunchConcurrency::ptr_que_CoreToLaunch[3] = { NULL, NULL, NULL };//NUMBER OF CONCURRENT CORES
+    bool flag_ConcurrentCoreState[3] = { NULL, NULL, NULL };//NUMBER OF CONCURRENT CORES
+    bool flag_praisingLaunch = NULL;
+    unsigned char* ptr_concurrent_CoreId_Index = NULL;
+    int* ptr_count_LaunchActive_For[3] = { NULL, NULL, NULL };//NUMBER OF CONCURNT CORES
+    int* ptr_count_LaunchIdle_For[3] = { NULL, NULL, NULL };//NUMBER OF CONCURNT CORES
+    unsigned char* ptr_new_concurrent_CoreId_Index = NULL;
+    unsigned char* ptr_que_CoreToLaunch[3] = { NULL, NULL, NULL };//NUMBER OF CONCURRENT CORES
 
     Control_Of_LaunchConcurrency::Control_Of_LaunchConcurrency(
         FLORENCE::Global* ptr_Global,
@@ -26,8 +27,8 @@ namespace FLORENCE
         for (unsigned char index = 0; index < *ptr_NumImplementedCores-1; index++)
         {
             this->flag_ConcurrentCoreState[index] = ptr_Global->GetConst_Core_IDLE();
-            this->ptr_count_LaunchActive_For[index] = int(0);
-            this->ptr_count_LaunchIdle_For[index] = int(0);
+            this->ptr_count_LaunchActive_For[index] = new int(0);
+            this->ptr_count_LaunchIdle_For[index] = new int(0);
             this->ptr_que_CoreToLaunch[index] = &index;
         }
     }

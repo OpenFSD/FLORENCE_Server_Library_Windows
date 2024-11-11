@@ -1,12 +1,9 @@
 #pragma once
 #include <array>
 #include <thread>
-
 #include "Control_Of_Execute.h"
-#include "Framework.h"
 #include "Global.h"
 #include "LaunchConcurrency.h"
-#include "Server.h"
 #include "WriteEnable.h"
 
 namespace FLORENCE
@@ -23,7 +20,7 @@ namespace FLORENCE
             unsigned char* ptr_MyNumImplementedCores,
             class Global* ptr_Global
         );
-        void Initialise_Threads(FLORENCE::Server* ptr_Server);
+        void Initialise_Threads();
         class Control_Of_Execute* Get_Control_Of_Execute();
         class LaunchConcurrency* Get_LaunchConcurrency();
         class WriteEnable* Get_WriteEnable();

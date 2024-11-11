@@ -1,4 +1,5 @@
 #include "pch.h"
+#include <cstddef>
 #include "Concurrent.h"
 
 namespace FLORENCE
@@ -27,7 +28,8 @@ namespace FLORENCE
     void Concurrent::Thread_Concurrency(
         unsigned char concurrent_coreId,
         unsigned char* ptr_MyNumImplementedCores,
-        FLORENCE::Control_Of_Concurrent* prt_Control_Of_Concurrent,
+        FLORENCE::Algorithms* ptr_Algorithms,
+        FLORENCE::Control_Of_Concurrent* ptr_Control_Of_Concurrent,
         FLORENCE::Control_Of_Data* ptr_Control_Of_Data,
         FLORENCE::Control_Of_Execute* ptr_Control_Of_Execute,
         FLORENCE::Control_Of_LaunchConcurrency* ptr_Control_Of_LaunchConcurrency,
@@ -74,7 +76,7 @@ namespace FLORENCE
                     ptr_Control_Of_Data->SetFlag_InputStackLoaded(true);
                 }
 
-                prt_Control_Of_Concurrent->SelectSet_Algorithm_Subset_For_Given_PraiseEventId(
+                ptr_Control_Of_Concurrent->SelectSet_Algorithm_Subset_For_Given_PraiseEventId(
                     ptr_Data->Get_InputRefferenceOfCore(concurrent_coreId)->GetPraiseEventId(),
                     concurrent_coreId
                 );
@@ -91,7 +93,7 @@ namespace FLORENCE
                     ptr_Global
                 );
 
-                ptr_Concurrent->Do_Concurrent_Algorithm_For_PraiseEventId(
+                ptr_Algorithms->Get_Concurren_Array(concurrent_coreId)->Do_Concurrent_Algorithm_For_PraiseEventId(
                     ptr_Data->Get_InputRefferenceOfCore(concurrent_coreId)->GetPraiseEventId(),
                     ptr_Algorithm_Subset,
                     ptr_Input_Subset,
@@ -132,9 +134,9 @@ namespace FLORENCE
 
     void  Concurrent::Do_Concurrent_Algorithm_For_PraiseEventId(
         int* ptr_praiseEventId,
-        class FLORENCE::Praise0_Algorithm* ptr_Algorithm_Subset,
-        class FLORENCE::Praise0_Input* ptr_Input_Subset,
-        class FLORENCE::Praise0_Output* ptr_Output_Subset
+        FLORENCE::Praise0_Algorithm* ptr_Algorithm_Subset,
+        FLORENCE::Praise0_Input* ptr_Input_Subset,
+        FLORENCE::Praise0_Output* ptr_Output_Subset
     )
     {
         ptr_Algorithm_Subset->Do_Praise(

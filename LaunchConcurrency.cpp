@@ -1,8 +1,11 @@
 #include "pch.h"
 #include "LaunchConcurrency.h"
+#include <cstddef>
 
 namespace FLORENCE
 {
+    class Control_Of_LaunchConcurrency* ptr_Control_Of_LaunchConcurrency = NULL;
+
     LaunchConcurrency::LaunchConcurrency()
     {
 
@@ -14,9 +17,9 @@ namespace FLORENCE
     }
 
     void LaunchConcurrency::Concurrent_Thread_Start(
-        class Control_Of_LaunchConcurrency* ptr_Control_Of_LaunchConcurrency,
+        FLORENCE::Control_Of_LaunchConcurrency* ptr_Control_Of_LaunchConcurrency,
         unsigned char* ptr_concurrent_CoreId,
-        class Global* ptr_Global,
+        FLORENCE::Global* ptr_Global,
         unsigned char* ptr_NumImplementedCores
     )
     {
@@ -30,18 +33,18 @@ namespace FLORENCE
     }
 
     void LaunchConcurrency::Initialise_Control(
-        class Global* ptr_Global,
+        FLORENCE::Global* ptr_Global,
         unsigned char* ptr_MyNumImplementedCores
     )
     {
-        this->ptr_Control_Of_LaunchConcurrency = new Control_Of_LaunchConcurrency(ptr_Global, ptr_MyNumImplementedCores);
+        this->ptr_Control_Of_LaunchConcurrency = new FLORENCE::Control_Of_LaunchConcurrency(ptr_Global, ptr_MyNumImplementedCores);
         while (this->ptr_Control_Of_LaunchConcurrency == NULL) { /* wait untill created */ }
     }
 
     void LaunchConcurrency::Thread_End(
-        Control_Of_LaunchConcurrency* ptr_Control_Of_LaunchConcurrency,
+        FLORENCE::Control_Of_LaunchConcurrency* ptr_Control_Of_LaunchConcurrency,
         unsigned char* ptr_concurrent_CoreId,
-        class Global* ptr_Global
+        FLORENCE::Global* ptr_Global
     )
     {
         while (ptr_Control_Of_LaunchConcurrency->GetFlag_PraisingLaunch() == true)
