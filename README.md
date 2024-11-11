@@ -1,6 +1,6 @@
 # FLORENCE in CMAKE
 
-## Debuging Link Errors
+## Debuging Errors
 - C2039
 - C2061
 
