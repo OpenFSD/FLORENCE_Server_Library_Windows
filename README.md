@@ -1,6 +1,8 @@
 # FLORENCE in CMAKE
 
 ## Debuging Link Errors
+- C2039
+- C2061
 
 
 ## Server and Buffer, For Full Stack Development
