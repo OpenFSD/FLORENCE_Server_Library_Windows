@@ -2,17 +2,18 @@
 #include <array>
 #include "Concurrent.h"
 #include "ListenRespond.h"
-#include "user_files/Praise0_Algorithm.h"
+#include "Praise0_Algorithm.h"
 
 namespace FLORENCE
 {
     class Algorithms
     {
     public:
-        Algorithms(unsigned char* ptr_NumberOfImplementedCores);
+        Algorithms();
         virtual ~Algorithms();
-        class Concurrent* Get_Concurren_Array(unsigned char concurrent_coreId);
-        class ListenRespond* Get_ListenRespond();
+        Concurrent* Get_Concurren_Array(int concurrent_coreId);
+        ListenRespond* Get_ListenRespond();
+        void Initialise(unsigned char* ptr_NumberOfImplementedCores);
 
 //===
 //===
@@ -32,8 +33,5 @@ namespace FLORENCE
         class Praise0_Algorithm* ptr_Praise0_Algorithm;
 //===
 //===
-
-
-
     };
 }

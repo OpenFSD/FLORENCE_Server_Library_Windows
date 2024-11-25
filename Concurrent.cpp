@@ -1,14 +1,16 @@
 #include "pch.h"
 #include <cstddef>
-#include "Concurrent.h"
+
 
 namespace FLORENCE
 {
-    class Control_Of_Concurrent* ptr_Control_Of_Concurrent = NULL;
-    class Praise0_Algorithm* ptr_Algorithms_Subset = NULL;//TODO CLASS T
+    Control_Of_Concurrent* ptr_Control_Of_Concurrent = NULL;
+    Praise0_Algorithm* ptr_Algorithms_Subset = NULL;//TODO CLASS T
 
     Concurrent::Concurrent()
     {
+        this->ptr_Control_Of_Concurrent = NULL;
+
         this->ptr_Algorithms_Subset = new Praise0_Algorithm();//TODO CLASS T
         while (this->ptr_Algorithms_Subset == NULL) { /* wait untill class constructed */ }
     }
@@ -27,106 +29,89 @@ namespace FLORENCE
 
     void Concurrent::Thread_Concurrency(
         unsigned char concurrent_coreId,
-        unsigned char* ptr_MyNumImplementedCores,
-        FLORENCE::Algorithms* ptr_Algorithms,
-        FLORENCE::Control_Of_Concurrent* ptr_Control_Of_Concurrent,
-        FLORENCE::Control_Of_Data* ptr_Control_Of_Data,
-        FLORENCE::Control_Of_Execute* ptr_Control_Of_Execute,
-        FLORENCE::Control_Of_LaunchConcurrency* ptr_Control_Of_LaunchConcurrency,
-        FLORENCE::Control_Of_Output* ptr_Control_Of_Output,
-        FLORENCE::Control_Of_WriteEnable* ptr_Control_Of_WriteEnable,
-        FLORENCE::Data* ptr_Data,
-        FLORENCE::Global* ptr_Global,
-        FLORENCE::Input* ptr_InputBuffer,
-        std::vector<class FLORENCE::Input*>* ptr_InputStack,
-        FLORENCE::LaunchConcurrency* ptr_LaunchConcurrency,
-        FLORENCE::Output* ptr_Output,
-        std::vector<class Output*>* ptr_OutputStack,
-        Praise0_Algorithm* ptr_Algorithm_Subset,
-        FLORENCE::Praise0_Input* ptr_Input_Subset,
-        FLORENCE::Praise0_Output* ptr_Output_Subset,
-        FLORENCE::WriteEnable* ptr_WriteEnable
+        unsigned char* ptr_MyNumImplementedCores
     )
     {
-        ptr_Control_Of_Execute->SetConditionCodeOfThisThreadedCore(concurrent_coreId);
-        while (ptr_Control_Of_Execute->GetFlag_SystemInitialised(ptr_MyNumImplementedCores) != false)
+        //FLORENCE::Server* FLORENCE::framework::Get_Server() = FLORENCE::framework::Get_Server();
+        FLORENCE::framework::Get_Server()->Get_Execute()->Get_Control_Of_Execute()->SetConditionCodeOfThisThreadedCore(concurrent_coreId);
+        while (FLORENCE::framework::Get_Server()->Get_Execute()->Get_Control_Of_Execute()->GetFlag_SystemInitialised(ptr_MyNumImplementedCores) != false)
         {
             // wait untill thread initalised
         }
-        if (ptr_Control_Of_LaunchConcurrency->GetFlag_ConcurrentCoreState(&concurrent_coreId) == ptr_Global->GetConst_Core_ACTIVE())
+        if (FLORENCE::framework::Get_Server()->Get_Execute()->Get_LaunchConcurrency()->Get_Control_Of_LaunchConcurrency()->GetFlag_ConcurrentCoreState(&concurrent_coreId) == FLORENCE::framework::Get_Server()->Get_Global()->GetConst_Core_ACTIVE())
         {
-            if (ptr_Control_Of_Data->GetFlag_InputStackLoaded() == true)
+            if (FLORENCE::framework::Get_Server()->Get_Data()->Get_Control_Of_Data()->GetFlag_InputStackLoaded() == true)
             {
-                ptr_WriteEnable->Write_Start(
-                    ptr_Control_Of_WriteEnable,
+                FLORENCE::framework::Get_Server()->Get_Execute()->Get_WriteEnable()->Write_Start(
+                    FLORENCE::framework::Get_Server()->Get_Execute()->Get_WriteEnable()->Get_Control_Of_WriteEnable(),
                     &concurrent_coreId,
                     ptr_MyNumImplementedCores,
-                    ptr_Global
+                    FLORENCE::framework::Get_Server()->Get_Global()
                 );
-                ptr_Control_Of_Data->PopFromStackOfInputPraises(
-                    ptr_Data->Get_InputRefferenceOfCore(concurrent_coreId),
-                    ptr_InputStack
+                FLORENCE::framework::Get_Server()->Get_Data()->Get_Control_Of_Data()->PopFromStackOfInputPraises(
+                    FLORENCE::framework::Get_Server()->Get_Data()->Get_InputRefferenceOfCore(concurrent_coreId),
+                    FLORENCE::framework::Get_Server()->Get_Data()->Get_StackOfInputPraise()
                 );
-                if (sizeof(ptr_Data->Get_StackOfInputPraise()) <= 1)
+                if (sizeof(FLORENCE::framework::Get_Server()->Get_Data()->Get_StackOfInputPraise()) <= 1)
                 {
-                    ptr_Control_Of_Data->SetFlag_InputStackLoaded(false);
+                    FLORENCE::framework::Get_Server()->Get_Data()->Get_Control_Of_Data()->SetFlag_InputStackLoaded(false);
                 }
                 else
                 {
-                    ptr_Control_Of_Data->SetFlag_InputStackLoaded(true);
+                    FLORENCE::framework::Get_Server()->Get_Data()->Get_Control_Of_Data()->SetFlag_InputStackLoaded(true);
                 }
 
-                ptr_Control_Of_Concurrent->SelectSet_Algorithm_Subset_For_Given_PraiseEventId(
-                    ptr_Data->Get_InputRefferenceOfCore(concurrent_coreId)->GetPraiseEventId(),
+                FLORENCE::framework::Get_Server()->Get_Algorithms()->Get_Concurren_Array(concurrent_coreId)->Get_Control_Of_Concurrent()->SelectSet_Algorithm_Subset_For_Given_PraiseEventId(
+                    FLORENCE::framework::Get_Server()->Get_Data()->Get_InputRefferenceOfCore(concurrent_coreId)->GetPraiseEventId(),
                     concurrent_coreId
                 );
 
-                ptr_Control_Of_Output->SelectSet_Output_Subset_For_Given_PraiseEventId(
-                    ptr_Data->Get_OutputRefferenceOfCore(concurrent_coreId)->GetPraiseEventId(),
+                FLORENCE::framework::Get_Server()->Get_Data()->Get_OutputRefferenceOfCore(concurrent_coreId)->Get_Control_Of_Output()->SelectSet_Output_Subset_For_Given_PraiseEventId(
+                    FLORENCE::framework::Get_Server()->Get_Data()->Get_OutputRefferenceOfCore(concurrent_coreId)->GetPraiseEventId(),
                     concurrent_coreId
                 );
 
-                ptr_WriteEnable->Write_End(
-                    ptr_Control_Of_WriteEnable,
+                 FLORENCE::framework::Get_Server()->Get_Execute()->Get_WriteEnable()->Write_End(
+                    FLORENCE::framework::Get_Server()->Get_Execute()->Get_WriteEnable()->Get_Control_Of_WriteEnable(),
                     &concurrent_coreId,
                     ptr_MyNumImplementedCores,
-                    ptr_Global
+                    FLORENCE::framework::Get_Server()->Get_Global()
                 );
 
-                ptr_Algorithms->Get_Concurren_Array(concurrent_coreId)->Do_Concurrent_Algorithm_For_PraiseEventId(
-                    ptr_Data->Get_InputRefferenceOfCore(concurrent_coreId)->GetPraiseEventId(),
-                    ptr_Algorithm_Subset,
-                    ptr_Input_Subset,
-                    ptr_Output_Subset
+                FLORENCE::framework::Get_Server()->Get_Algorithms()->Get_Concurren_Array(int(concurrent_coreId))->Do_Concurrent_Algorithm_For_PraiseEventId(
+                    FLORENCE::framework::Get_Server()->Get_Data()->Get_InputRefferenceOfCore(concurrent_coreId)->GetPraiseEventId(),
+                    FLORENCE::framework::Get_Server()->Get_Algorithms()->Get_Concurren_Array(int(concurrent_coreId))->Get_Algorithm_Subset(),
+                    FLORENCE::framework::Get_Server()->Get_Data()->Get_InputRefferenceOfCore(int(concurrent_coreId))->Get_InputBufferSubset(),
+                    FLORENCE::framework::Get_Server()->Get_Data()->Get_OutputRefferenceOfCore(int(concurrent_coreId))->Get_OutputBuffer_Subset()
                 );
-                ptr_WriteEnable->Write_Start(
-                    ptr_Control_Of_WriteEnable,
+                FLORENCE::framework::Get_Server()->Get_Execute()->Get_WriteEnable()->Write_Start(
+                    FLORENCE::framework::Get_Server()->Get_Execute()->Get_WriteEnable()->Get_Control_Of_WriteEnable(),
                     &concurrent_coreId,
                     ptr_MyNumImplementedCores,
-                    ptr_Global
+                    FLORENCE::framework::Get_Server()->Get_Global()
                 );
-                ptr_Control_Of_Data->PushToStackOfOutput(
-                    ptr_OutputStack,
-                    ptr_Data->Get_OutputRefferenceOfCore(concurrent_coreId)
+                FLORENCE::framework::Get_Server()->Get_Data()->Get_Control_Of_Data()->PushToStackOfOutput(
+                    FLORENCE::framework::Get_Server()->Get_Data()->Get_StackOfDistributeBuffer(),
+                    FLORENCE::framework::Get_Server()->Get_Data()->Get_OutputRefferenceOfCore(concurrent_coreId)
                 );
-                if (sizeof(ptr_Data->Get_StackOfInputPraise()) < 1)
+                if (sizeof(FLORENCE::framework::Get_Server()->Get_Data()->Get_StackOfInputPraise()) < 1)
                 {
-                    ptr_Control_Of_Data->SetFlag_InputStackLoaded(false);
+                    FLORENCE::framework::Get_Server()->Get_Data()->Get_Control_Of_Data()->SetFlag_InputStackLoaded(false);
                 }
                 else
                 {
-                    ptr_Control_Of_Data->SetFlag_InputStackLoaded(true);
+                    FLORENCE::framework::Get_Server()->Get_Data()->Get_Control_Of_Data()->SetFlag_InputStackLoaded(true);
                 }
-                ptr_LaunchConcurrency->Thread_End(
-                    ptr_Control_Of_LaunchConcurrency,
+                FLORENCE::framework::Get_Server()->Get_Execute()->Get_LaunchConcurrency()->Thread_End(
+                    FLORENCE::framework::Get_Server()->Get_Execute()->Get_LaunchConcurrency()->Get_Control_Of_LaunchConcurrency(),
                     &concurrent_coreId,
-                    ptr_Global
+                    FLORENCE::framework::Get_Server()->Get_Global()
                 );
-                ptr_WriteEnable->Write_End(
-                    ptr_Control_Of_WriteEnable,
+                FLORENCE::framework::Get_Server()->Get_Execute()->Get_WriteEnable()->Write_End(
+                    FLORENCE::framework::Get_Server()->Get_Execute()->Get_WriteEnable()->Get_Control_Of_WriteEnable(),
                     &concurrent_coreId,
                     ptr_MyNumImplementedCores,
-                    ptr_Global
+                    FLORENCE::framework::Get_Server()->Get_Global()
                 );
             }
         }
@@ -134,7 +119,7 @@ namespace FLORENCE
 
     void  Concurrent::Do_Concurrent_Algorithm_For_PraiseEventId(
         int* ptr_praiseEventId,
-        FLORENCE::Praise0_Algorithm* ptr_Algorithm_Subset,
+        Praise0_Algorithm* ptr_Algorithm_Subset,
         FLORENCE::Praise0_Input* ptr_Input_Subset,
         FLORENCE::Praise0_Output* ptr_Output_Subset
     )

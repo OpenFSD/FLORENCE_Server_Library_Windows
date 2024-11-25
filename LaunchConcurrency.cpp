@@ -1,14 +1,13 @@
 #include "pch.h"
-#include "LaunchConcurrency.h"
 #include <cstddef>
 
 namespace FLORENCE
 {
-    class Control_Of_LaunchConcurrency* ptr_Control_Of_LaunchConcurrency = NULL;
+    Control_Of_LaunchConcurrency* ptr_Control_Of_LaunchConcurrency = NULL;
 
     LaunchConcurrency::LaunchConcurrency()
     {
-
+        this->ptr_Control_Of_LaunchConcurrency = NULL;
     }
 
     LaunchConcurrency::~LaunchConcurrency()
@@ -78,3 +77,4 @@ namespace FLORENCE
     {
         return this->ptr_Control_Of_LaunchConcurrency;
     }
+}

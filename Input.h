@@ -1,6 +1,6 @@
 #pragma once
 #include "Control_Of_Input.h"
-#include "user_files/Praise0_Input.h"
+#include "Praise0_Input.h"
 
 namespace FLORENCE
 {

@@ -6,7 +6,7 @@
 namespace FLORENCE
 {
 	// TODO: This is an example of a library function
-	void CreateServer()
+	static void CreateServer()
 	{
 		FLORENCE::framework* ptr_framework = new FLORENCE::framework();
 		while (ptr_framework == NULL) { /* wait untill created */ }

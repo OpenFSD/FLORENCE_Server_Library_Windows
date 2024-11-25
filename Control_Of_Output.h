@@ -1,6 +1,6 @@
 #pragma once
 #include "framework.h"
-#include "user_files/Praise0_Output.h"
+#include "Praise0_Output.h"
 #include "Server.h"
 
 namespace FLORENCE

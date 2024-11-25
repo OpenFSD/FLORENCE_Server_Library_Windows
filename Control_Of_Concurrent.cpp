@@ -1,5 +1,4 @@
 #include "pch.h"
-#include "Control_Of_Concurrent.h"
 #include <cstddef>
 
 namespace FLORENCE
@@ -19,13 +18,13 @@ namespace FLORENCE
 		unsigned char concurrent_coreId
 	)
 	{
-		FLORENCE::Server* server = FLORENCE::framework::Get_Server();
+		//FLORENCE::Server* FLORENCE::framework::Get_Server() = FLORENCE::framework::Get_Server();
 		switch (*ptr_praiseEventId)
 		{
 //===
 //===	
 		case 0:
-			server->Get_Algorithms()->Get_Concurren_Array(concurrent_coreId)->Set_Algorithm_Subset(new FLORENCE::Praise0_Algorithm());
+			FLORENCE::framework::Get_Server()->Get_Algorithms()->Get_Concurren_Array(int(concurrent_coreId))->Set_Algorithm_Subset(new FLORENCE::Praise0_Algorithm());
 			break;
 
 		case 1:

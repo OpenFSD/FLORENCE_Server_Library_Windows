@@ -1,13 +1,11 @@
 #pragma once
 #include <array>
 #include <vector>
-
 #include "Control_Of_Data.h"
 #include "Input.h"
 #include "Output.h"
-#include "user_files/Praise0_Input.h"
-#include "user_files/Praise0_Output.h"
-
+#include "Praise0_Input.h"
+#include "Praise0_Output.h"
 
 namespace FLORENCE
 {

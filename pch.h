@@ -8,14 +8,10 @@
 #define PCH_H
 
 // add headers that you want to pre-compile here
-#include "framework.h"
-#include "Server.h"
 #include "Global.h"
 #include "Algorithms.h"
 #include "Concurrent.h"
 #include "Control_Of_Algorithms.h"
-#include "user_files\Praise0_Algorithm.h"
-#include "Concurrent.h"
 #include "Control_Of_Concurrent.h"
 #include "Control_Of_Data.h"
 #include "Control_Of_Execute.h"
@@ -31,9 +27,10 @@
 #include "Input.h"
 #include "LaunchConcurrency.h"
 #include "Output.h"
-#include "user_files/Praise0_Algorithm.h"
-#include "user_files/Praise0_Input.h"
-#include "user_files/Praise0_Output.h"
+#include "Praise0_Algorithm.h"
+#include "Praise0_Input.h"
+#include "Praise0_Output.h"
+#include "Server.h"
 #include "WriteEnable.h"
 #include "ListenRespond.h"
 

@@ -1,5 +1,4 @@
 #include "pch.h"
-#include "Data.h"
 #include <cstddef>
 
 namespace FLORENCE
@@ -26,11 +25,11 @@ namespace FLORENCE
     {
         this->ptr_new_Input = new Input();
         while (this->ptr_new_Input == NULL) { /* wait untill created */ }
-        this->ptr_new_Input->initialise_Control();
+        this->ptr_new_Input->Initialise_Control();
 
         this->ptr_new_Output = new Output();
         while (this->ptr_new_Output == NULL) { /* wait untill created */ }
-        this->ptr_new_Output->initialise_Control();
+        this->ptr_new_Output->Initialise_Control();
 
         this->ptr_DistributeBuffer = this->ptr_new_Output;
         while (this->ptr_DistributeBuffer == NULL) { /* wait untill created */ }

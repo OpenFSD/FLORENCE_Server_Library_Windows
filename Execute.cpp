@@ -1,5 +1,4 @@
 #include "pch.h"
-#include "Execute.h"
 #include <cstddef>
 
 namespace FLORENCE
@@ -34,56 +33,10 @@ namespace FLORENCE
         }//NUMBER OF CORES
     }
 
-    void Execute::Initialise_Threads()
+    void Execute::Initialise()
     {
-        FLORENCE::Server* server = FLORENCE::framework::Get_Server();
-        ptr_Thread_WithCoreId[0] = new std::thread(
-            server->Get_Algorithms()->Get_ListenRespond()->Thread_IO_ListenDistribute,
-            unsigned char(0),
-            server->Get_Global()->Get_NumCores(),
-            server->Get_Execute()->Get_Control_Of_Execute(),
-            server->Get_Data()->Get_Control_Of_Data(),
-            server->Get_Execute()->Get_LaunchConcurrency(),
-            server->Get_Algorithms()->Get_ListenRespond()->Get_Control_Of_ListenRespond(),
-            server->Get_Execute()->Get_WriteEnable(),
-            server->Get_Data(),
-            server->Get_Global(),
-            server->Get_Data()->Get_StackOfInputPraise(),
-            server->Get_Execute()->Get_LaunchConcurrency(),
-            server->Get_Data()->Get_StackOfDistributeBuffer(),
-            server->Get_Data()->Get_PraiseBuffer(),
-            server->Get_Data()->Get_PraiseBuffer()->Get_InputBufferSubset(),
-            server->Get_Execute()->Get_WriteEnable()
-        );
-        for (unsigned char index = 1; index <= *server->Get_Global()->Get_NumCores(); index++)
-        {
-            ptr_Thread_WithCoreId[index] = new std::thread(
-                server->Get_Algorithms()->Get_Concurren_Array(index)->Thread_Concurrency,
-                unsigned char(index),
-                server->Get_Global()->Get_NumCores(),
-                server->Get_Algorithms()->Get_Concurren_Array(index),
-                server->Get_Algorithms()->Get_Concurren_Array(index)->Get_Control_Of_Concurrent(),
-                server->Get_Data()->Get_Control_Of_Data(),
-                server->Get_Execute()->Get_Control_Of_Execute(),
-                server->Get_Execute()->Get_LaunchConcurrency(),
-                server->Get_Execute()->Get_WriteEnable(),
-                server->Get_Data(),
-                server->Get_Global(),
-                server->Get_Data()->Get_PraiseBuffer(),
-                server->Get_Data()->Get_StackOfInputPraise(),
-                server->Get_Execute()->Get_LaunchConcurrency(),
-                server->Get_Data()->Get_DistributeBuffer(),
-                server->Get_Data()->Get_StackOfDistributeBuffer(),
-                server->Get_Algorithms()->Get_Concurren_Array(index)->Get_Algorithm_Subset(),
-                server->Get_Data()->Get_PraiseBuffer()->Get_InputBufferSubset(),
-                server->Get_Data()->Get_DistributeBuffer()->Get_OutputBuffer_Subset(),
-                server->Get_Execute()->Get_WriteEnable()
-            );
-        }
-        while (server->Get_Execute()->Get_Control_Of_Execute()->GetFlag_SystemInitialised(server->Get_Global()->Get_NumCores()) != false)
-        {
-
-        }
+        //FLORENCE::Server* FLORENCE::framework::Get_Server() = FLORENCE::framework::Get_Server();
+        FLORENCE::framework::Get_Server()->Get_Algorithms()->Initialise(FLORENCE::framework::Get_Server()->Get_Global()->Get_NumCores());
     }
 
     void Execute::Initialise_Control(
@@ -93,6 +46,28 @@ namespace FLORENCE
     {
         this->ptr_Control_Of_Execute = new class Control_Of_Execute(ptr_MyNumImplementedCores);
         while (this->ptr_Control_Of_Execute == NULL) { /* wait untill created */ }
+    }
+
+    void Execute::Initialise_Threads()
+    {
+        //FLORENCE::Server* FLORENCE::framework::Get_Server() = FLORENCE::framework::Get_Server();
+        this->ptr_Thread_WithCoreId[0] = new std::thread(
+            FLORENCE::framework::Get_Server()->Get_Algorithms()->Get_ListenRespond()->Thread_IO_ListenDistribute,
+            unsigned char(0),
+            FLORENCE::framework::Get_Server()->Get_Global()->Get_NumCores()
+        );
+        for (unsigned char index = 1; index <= *FLORENCE::framework::Get_Server()->Get_Global()->Get_NumCores(); index++)
+        {
+            this->ptr_Thread_WithCoreId[index] = new std::thread(
+                FLORENCE::framework::Get_Server()->Get_Algorithms()->Get_Concurren_Array(int(index))->Thread_Concurrency,
+                unsigned char(index),
+                FLORENCE::framework::Get_Server()->Get_Global()->Get_NumCores()
+            );
+        }
+        while (FLORENCE::framework::Get_Server()->Get_Execute()->Get_Control_Of_Execute()->GetFlag_SystemInitialised(FLORENCE::framework::Get_Server()->Get_Global()->Get_NumCores()) != false)
+        {
+
+        }
     }
 
     class Control_Of_Execute* Execute::Get_Control_Of_Execute()

@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "Control_Of_Output.h"
+
 
 
 namespace FLORENCE
@@ -18,13 +18,13 @@ namespace FLORENCE
 		unsigned char concurrent_coreId
 	)
 	{
-		FLORENCE:Server* server = FLORENCE::framework::Get_Server();
+		//FLORENCE:Server* FLORENCE::framework::Get_Server() = FLORENCE::framework::Get_Server();
 		switch (*ptr_praiseEventId)
 		{
 //===
 //===
 		case 0:
-			server->Get_Data()->Get_OutputRefferenceOfCore(concurrent_coreId)->Set_OutputBuffer_Subset(new class FLORENCE::Praise0_Output());
+			FLORENCE::framework::Get_Server()->Get_Data()->Get_OutputRefferenceOfCore(concurrent_coreId)->Set_OutputBuffer_Subset(new class FLORENCE::Praise0_Output());
 			break;
 
 		case 1:

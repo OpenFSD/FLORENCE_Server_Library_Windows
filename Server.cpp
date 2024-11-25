@@ -1,5 +1,4 @@
 #include "pch.h"
-#include "Server.h"
 #include <cstddef>
 
 namespace FLORENCE
@@ -14,7 +13,7 @@ namespace FLORENCE
         this->ptr_Global = new FLORENCE::Global();
         while (this->ptr_Global == NULL) { /* wait untill created */ }
 
-        this->ptr_Algorithms = new FLORENCE::Algorithms(this->ptr_Global->Get_NumCores());
+        this->ptr_Algorithms = new FLORENCE::Algorithms();
         while (this->ptr_Algorithms == NULL) { /* wait untill created */ }
 
         this->ptr_Data = new FLORENCE::Data(this->ptr_Global->Get_NumCores());

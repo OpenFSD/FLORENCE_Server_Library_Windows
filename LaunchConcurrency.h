@@ -31,6 +31,6 @@ namespace FLORENCE
     protected:
 
     private:
-        Control_Of_LaunchConcurrency* ptr_Control_Of_LaunchConcurrency;
+        class Control_Of_LaunchConcurrency* ptr_Control_Of_LaunchConcurrency;
     };
 }

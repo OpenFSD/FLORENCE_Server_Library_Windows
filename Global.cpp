@@ -1,5 +1,4 @@
 #include "pch.h"
-#include "Global.h"
 #include <cstddef>
 
 namespace FLORENCE

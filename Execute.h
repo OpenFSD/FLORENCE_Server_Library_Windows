@@ -16,6 +16,7 @@ namespace FLORENCE
             unsigned char* ptr_MyNumImplementedCores
         );
         virtual ~Execute();
+        void Initialise();
         void Initialise_Control(
             unsigned char* ptr_MyNumImplementedCores,
             class Global* ptr_Global

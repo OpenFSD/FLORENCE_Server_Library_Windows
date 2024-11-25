@@ -1,6 +1,6 @@
 #pragma once
 #include "Control_Of_Output.h"
-#include "user_files/Praise0_Output.h"
+#include "Praise0_Output.h"
 
 namespace FLORENCE
 {

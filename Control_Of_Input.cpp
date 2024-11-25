@@ -1,5 +1,4 @@
 #include "pch.h"
-#include "Control_Of_Input.h"
 
 namespace FLORENCE
 {
@@ -17,13 +16,13 @@ namespace FLORENCE
 		int* ptr_praiseEventId
 	)
 	{
-		FLORENCE:Server* server = FLORENCE::framework::Get_Server();
+		//FLORENCE:Server* FLORENCE::framework::Get_Server() = FLORENCE::framework::Get_Server();
 		switch (*ptr_praiseEventId)
 		{
 //===
 //===
 		case 0:
-			server->Get_Data()->Get_PraiseBuffer()->Set_InputBuffer_SubSet(new class FLORENCE::Praise0_Input());
+			FLORENCE::framework::Get_Server()->Get_Data()->Get_PraiseBuffer()->Set_InputBuffer_SubSet(new class FLORENCE::Praise0_Input());
 			break;
 
 		case 1:

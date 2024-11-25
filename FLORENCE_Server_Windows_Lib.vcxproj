@@ -159,10 +159,10 @@
     <ClInclude Include="ListenRespond.h" />
     <ClInclude Include="Output.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Praise0_Algorithm.h" />
+    <ClInclude Include="Praise0_Input.h" />
+    <ClInclude Include="Praise0_Output.h" />
     <ClInclude Include="Server.h" />
-    <ClInclude Include="user_files\Praise0_Algorithm.h" />
-    <ClInclude Include="user_files\Praise0_Input.h" />
-    <ClInclude Include="user_files\Praise0_Output.h" />
     <ClInclude Include="WriteEnable.h" />
   </ItemGroup>
   <ItemGroup>
@@ -192,10 +192,10 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Praise0_Algorithm.cpp" />
+    <ClCompile Include="Praise0_Input.cpp" />
+    <ClCompile Include="Praise0_Output.cpp" />
     <ClCompile Include="Server.cpp" />
-    <ClCompile Include="user_files\Praise0_Algorithm.cpp" />
-    <ClCompile Include="user_files\Praise0_Input.cpp" />
-    <ClCompile Include="user_files\Praise0_Output.cpp" />
     <ClCompile Include="WriteEnable.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

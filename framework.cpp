@@ -1,6 +1,5 @@
 #include "pch.h"
 #include <cstddef>
-#include "framework.h"
 
 namespace FLORENCE
 {
@@ -10,6 +9,7 @@ namespace FLORENCE
 	{
 		this->ptr_Server = new FLORENCE::Server();
 		while (this->ptr_Server == NULL) { /* wait untill created */ }
+		this->ptr_Server->Get_Execute()->Initialise();
 		this->ptr_Server->Get_Execute()->Initialise_Threads();
 	}
 
