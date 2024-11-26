@@ -9,7 +9,7 @@ namespace FLORENCE
 
     Input::Input()
     {
-        ptr_praiseInputBuffer_Subset = new class Praise0_Input();//TODO CLASS T
+        ptr_praiseInputBuffer_Subset = new class FLORENCE::Praise0_Input();//TODO CLASS T
         while (ptr_praiseInputBuffer_Subset == NULL) { /* wait untill created */ }
 
         ptr_in_praiseEventId = new int(0);
@@ -25,7 +25,7 @@ namespace FLORENCE
 
     void Input::Initialise_Control()
     {
-        ptr_Control_Of_Input = new class Control_Of_Input();
+        ptr_Control_Of_Input = new class FLORENCE::Control_Of_Input();
         while (ptr_Control_Of_Input == NULL) { /* wait untill created */ }
     }
 

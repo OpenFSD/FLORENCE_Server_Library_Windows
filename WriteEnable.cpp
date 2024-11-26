@@ -20,7 +20,7 @@ namespace FLORENCE
         unsigned char* ptr_MyNumImplementedCores
     )
     {
-        ptr_Control_Of_WriteEnable = new FLORENCE::Control_Of_WriteEnable(ptr_Global, ptr_MyNumImplementedCores);
+        ptr_Control_Of_WriteEnable = new class FLORENCE::Control_Of_WriteEnable(ptr_Global, ptr_MyNumImplementedCores);
         while (ptr_Control_Of_WriteEnable == NULL) { /* wait untill created */ }
     }
 
@@ -50,7 +50,7 @@ namespace FLORENCE
         ptr_Control_Of_WriteEnable->SetFlag_readWrite_Open(false);
     }
     void WriteEnable::Write_Start(
-        class Control_Of_WriteEnable* ptr_Control_Of_WriteEnable,
+        class FLORENCE::Control_Of_WriteEnable* ptr_Control_Of_WriteEnable,
         unsigned char* ptr_coreId,
         unsigned char* ptr_MyNumImplementedCores,
         class FLORENCE::Global* ptr_Global

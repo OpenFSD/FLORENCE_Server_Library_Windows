@@ -15,13 +15,13 @@ namespace FLORENCE
     {
         ptr_Control_Of_Execute = NULL;
 
-        ptr_LaunchConcurrency = new class LaunchConcurrency();
+        ptr_LaunchConcurrency = new class FLORENCE::LaunchConcurrency();
         while (ptr_LaunchConcurrency == NULL) { /* wait untill created */ }
         ptr_LaunchConcurrency->Initialise_Control(ptr_Global, ptr_MyNumImplementedCores);
 
         ptr_Thread_WithCoreId[4] = { NULL };//NUMBER OF CORES
 
-        ptr_WriteEnable = new class WriteEnable();
+        ptr_WriteEnable = new class FLORENCE::WriteEnable();
         while (ptr_WriteEnable == NULL) { /* wait untill created */ }
         ptr_WriteEnable->Initialise_Control(ptr_Global, ptr_MyNumImplementedCores);
     }
@@ -47,7 +47,7 @@ namespace FLORENCE
         FLORENCE::Global* ptr_Global
     )
     {
-        ptr_Control_Of_Execute = new class Control_Of_Execute(ptr_MyNumImplementedCores);
+        ptr_Control_Of_Execute = new class FLORENCE::Control_Of_Execute(ptr_MyNumImplementedCores);
         while (ptr_Control_Of_Execute == NULL) { /* wait untill created */ }
     }
 

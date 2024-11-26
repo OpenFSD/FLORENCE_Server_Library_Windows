@@ -23,18 +23,18 @@ namespace FLORENCE
 
     Data::Data(unsigned char* ptr_NumberOfImplementedCores)
     {
-        ptr_new_Input = new Input();
+        ptr_new_Input = new class FLORENCE::Input();
         while (ptr_new_Input == NULL) { /* wait untill created */ }
         ptr_new_Input->Initialise_Control();
 
-        ptr_new_Output = new Output();
+        ptr_new_Output = new class FLORENCE::Output();
         while (ptr_new_Output == NULL) { /* wait untill created */ }
         ptr_new_Output->Initialise_Control();
 
         ptr_DistributeBuffer = ptr_new_Output;
         while (ptr_DistributeBuffer == NULL) { /* wait untill created */ }
 
-        class Input* ptr_InputRefferenceOfCore[3] = {
+        class FLORENCE::Input* ptr_InputRefferenceOfCore[3] = {
             ptr_new_Input,
             ptr_new_Input,
             ptr_new_Input
@@ -47,7 +47,7 @@ namespace FLORENCE
         ptr_InputRefferenceOfCore_Array = ptr_InputRefferenceOfCore;
         while (ptr_InputRefferenceOfCore_Array == NULL) { /* wait untill created */ }
 
-        class Output* ptr_OutputRefferenceOfCore[3] = {
+        class FLORENCE::Output* ptr_OutputRefferenceOfCore[3] = {
             ptr_new_Output,
             ptr_new_Output,
             ptr_new_Output
@@ -60,12 +60,12 @@ namespace FLORENCE
         ptr_OutputRefferenceOfCore_Array = ptr_OutputRefferenceOfCore;
         while (ptr_OutputRefferenceOfCore_Array == NULL) { /* wait untill created */ }
 
-        ptr_StackOfInputPraise = new std::vector<class Input*>;
+        ptr_StackOfInputPraise = new std::vector<class FLORENCE::Input*>;
         while (ptr_StackOfInputPraise == NULL) { /* wait untill created */ }
         ptr_StackOfInputPraise->resize(1);
         ptr_StackOfInputPraise->at(0) = ptr_new_Input;
 
-        ptr_StackOfDistributeBuffer = new std::vector<class Output*>;
+        ptr_StackOfDistributeBuffer = new std::vector<class FLORENCE::Output*>;
         while (ptr_StackOfDistributeBuffer == NULL) { /* wait untill created */ }
         ptr_StackOfDistributeBuffer->resize(1);
         ptr_StackOfDistributeBuffer->at(0) = ptr_new_Output;
@@ -75,9 +75,9 @@ namespace FLORENCE
 
 //===
 //===
-        prt_Praise0_Input = new Praise0_Input();
+        prt_Praise0_Input = new class FLORENCE::Praise0_Input();
         while (prt_Praise0_Input == NULL) { /* wait untill created */ }
-        prt_Praise0_Outut = new Praise0_Output();
+        prt_Praise0_Outut = new class FLORENCE::Praise0_Output();
         while (prt_Praise0_Outut == NULL) { /* wait untill created */ }
 //===
 //===
@@ -101,7 +101,7 @@ namespace FLORENCE
 
     void Data::Initialise_Control()
     {
-        ptr_Control_Of_Data = new Control_Of_Data();
+        ptr_Control_Of_Data = new FLORENCE::Control_Of_Data();
         while (ptr_Control_Of_Data == NULL) { /* wait untill created */ }
     }
 
@@ -125,12 +125,12 @@ namespace FLORENCE
         return ptr_OutputRefferenceOfCore_Array[concurrent_coreId];
     }
 
-    std::vector<class Input*>* Data::Get_StackOfInputPraise()
+    std::vector<class FLORENCE::Input*>* Data::Get_StackOfInputPraise()
     {
         return ptr_StackOfInputPraise;
     }
 
-    std::vector<class Output*>* Data::Get_StackOfDistributeBuffer()
+    std::vector<class FLORENCE::Output*>* Data::Get_StackOfDistributeBuffer()
     {
         return ptr_StackOfDistributeBuffer;
     }
@@ -140,22 +140,22 @@ namespace FLORENCE
         return ptr_PraiseBuffer;
     }
 
-    void Data::Set_DistributeBuffer(class Output* value_Output)
+    void Data::Set_DistributeBuffer(class FLORENCE::Output* value_Output)
     {
         ptr_DistributeBuffer = value_Output;
     }
 
-    void Data::Set_InputRefferenceOfCore(unsigned char concurrent_coreId, class Input* value_Input)
+    void Data::Set_InputRefferenceOfCore(unsigned char concurrent_coreId, class FLORENCE::Input* value_Input)
     {
         ptr_InputRefferenceOfCore_Array[concurrent_coreId] = value_Input;
     }
 
-    void Data::Set_OutputRefferenceOfCore(unsigned char concurrent_coreId, class Output* value_Output)
+    void Data::Set_OutputRefferenceOfCore(unsigned char concurrent_coreId, class FLORENCE::Output* value_Output)
     {
         ptr_OutputRefferenceOfCore_Array[concurrent_coreId] = value_Output;
     }
 
-    void Data::Set_PraiseBuffer(class Input* value_Input)
+    void Data::Set_PraiseBuffer(class FLORENCE::Input* value_Input)
     {
         ptr_PraiseBuffer = value_Input;
     }

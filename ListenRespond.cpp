@@ -7,18 +7,18 @@ namespace FLORENCE
 
     ListenRespond::ListenRespond()
     {
-        this->ptr_Control_Of_ListenRespond = NULL;
+        ptr_Control_Of_ListenRespond = NULL;
     }
 
     ListenRespond::~ListenRespond()
     {
-        delete this->ptr_Control_Of_ListenRespond;
+        delete ptr_Control_Of_ListenRespond;
     }
 
     void ListenRespond::Initialise_Control()
     {
-        this->ptr_Control_Of_ListenRespond = new class Control_Of_ListenRespond();
-        while (this->ptr_Control_Of_ListenRespond == NULL) { /* wait untill class constructed */ }
+        ptr_Control_Of_ListenRespond = new class Control_Of_ListenRespond();
+        while (ptr_Control_Of_ListenRespond == NULL) { /* wait untill class constructed */ }
     }
 
     void ListenRespond::Thread_IO_ListenDistribute(
@@ -122,6 +122,6 @@ namespace FLORENCE
 
     class Control_Of_ListenRespond* ListenRespond::Get_Control_Of_ListenRespond()
     {
-        return this->ptr_Control_Of_ListenRespond;
+        return ptr_Control_Of_ListenRespond;
     }
 }

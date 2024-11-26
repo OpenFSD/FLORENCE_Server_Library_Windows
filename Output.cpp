@@ -10,7 +10,7 @@ namespace FLORENCE
 
     Output::Output()
     {
-        praiseOutputBuffer_Subset = new class Praise0_Output();//ToDo CLASS T
+        praiseOutputBuffer_Subset = new class FLORENCE::Praise0_Output();//ToDo CLASS T
         while (praiseOutputBuffer_Subset == NULL) { /* wait untill created */ }
         
         int* ptr_out_PraiseEventId = new int(0);
@@ -26,7 +26,7 @@ namespace FLORENCE
 
     void Output::Initialise_Control()
     {
-        ptr_Control_Of_Output = new class Control_Of_Output();
+        ptr_Control_Of_Output = new class FLORENCE::Control_Of_Output();
         while (ptr_Control_Of_Output == nullptr) { /* wait untill created */ }
     }
 
@@ -45,7 +45,7 @@ namespace FLORENCE
         return ptr_out_PraiseEventId;
     }
 
-    void Output::Set_OutputBuffer_Subset(class Praise0_Output* value)
+    void Output::Set_OutputBuffer_Subset(class FLORENCE::Praise0_Output* value)
     {
         praiseOutputBuffer_Subset = value;
     }
