@@ -10,27 +10,27 @@ namespace FLORENCE
         WriteEnable();
         virtual ~WriteEnable();
         void Initialise_Control(
-            Global* ptr_Global,
+            class Global* ptr_Global,
             unsigned char* ptr_MyNumImplementedCores
         );
         void Write_End(
-            Control_Of_WriteEnable* ptr_Control_Of_WriteEnable,
+            class Control_Of_WriteEnable* ptr_Control_Of_WriteEnable,
             unsigned char* ptr_coreId,
             unsigned char* ptr_MyNumImplementedCores,
-            Global* ptr_Global
+            class Global* ptr_Global
         );
         void Write_Start(
-            Control_Of_WriteEnable* ptr_Control_Of_WriteEnable,
+            class Control_Of_WriteEnable* ptr_Control_Of_WriteEnable,
             unsigned char* ptr_coreId,
             unsigned char* ptr_MyNumImplementedCores,
-            Global* ptr_Global
+            class Global* ptr_Global
         );
 
-        Control_Of_WriteEnable* Get_Control_Of_WriteEnable();
+        class Control_Of_WriteEnable* Get_Control_Of_WriteEnable();
 
     protected:
 
     private:
-        Control_Of_WriteEnable* ptr_Control_Of_WriteEnable;
+        static class Control_Of_WriteEnable* ptr_Control_Of_WriteEnable;
     };
 }

@@ -11,8 +11,8 @@ namespace FLORENCE
     public:
         Algorithms();
         virtual ~Algorithms();
-        Concurrent* Get_Concurren_Array(int concurrent_coreId);
-        ListenRespond* Get_ListenRespond();
+        class Concurrent* Get_Concurren_Array(int concurrent_coreId);
+        class ListenRespond* Get_ListenRespond();
         void Initialise(unsigned char* ptr_NumberOfImplementedCores);
 
 //===
@@ -24,13 +24,13 @@ namespace FLORENCE
     protected:
 
     private:
-        class Concurrent** ptr_Concurrent_Array;
-        class Concurrent* ptr_Concurrent[3];
-        class ListenRespond* ptr_ListenRespond;
-        class Concurrent* ptr_New_Concurrent;
+        static class Concurrent** ptr_Concurrent_Array;
+        static class Concurrent* ptr_Concurrent[3];
+        static class ListenRespond* ptr_ListenRespond;
+        static class Concurrent* ptr_New_Concurrent;
 //===
 //===
-        class Praise0_Algorithm* ptr_Praise0_Algorithm;
+        static class Praise0_Algorithm* ptr_Praise0_Algorithm;
 //===
 //===
     };

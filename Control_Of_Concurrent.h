@@ -1,4 +1,6 @@
 #pragma once
+#include "framework.h"
+#include "Praise0_Algorithm.h"
 
 namespace FLORENCE
 {

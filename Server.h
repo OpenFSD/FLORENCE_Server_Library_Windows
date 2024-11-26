@@ -19,9 +19,9 @@ namespace FLORENCE
     protected:
 
     private:
-        class Algorithms* ptr_Algorithms;
-        class Data* ptr_Data;
-        class Execute* ptr_Execute;
-        class Global* ptr_Global;
+        static class Algorithms* ptr_Algorithms;
+        static class Data* ptr_Data;
+        static class Execute* ptr_Execute;
+        static class Global* ptr_Global;
     };
 }

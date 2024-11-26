@@ -1,12 +1,12 @@
-#include "pch.h"
+#include "Praise0_Output.h"
 
 namespace FLORENCE
 {
-	bool praise0_Result = false;
+	bool Praise0_Output::praise0_Result = false;
 
 	Praise0_Output::Praise0_Output()
 	{
-		this->praise0_Result = bool(false);
+		praise0_Result = bool(false);
 	}
 
 	Praise0_Output::~Praise0_Output()

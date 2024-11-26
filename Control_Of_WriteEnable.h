@@ -7,23 +7,23 @@ namespace FLORENCE
     {
     public:
         Control_Of_WriteEnable(
-            FLORENCE::Global* ptr_Global,
+            class FLORENCE::Global* ptr_Global,
             unsigned char* ptr_MyNumImplementedCores
         );
         ~Control_Of_WriteEnable();
         void WriteEnable_Activate(
             unsigned char* ptr_coreId,
-            FLORENCE::Global* ptr_Global,
+            class FLORENCE::Global* ptr_Global,
             unsigned char* ptr_MyNumImplementedCores
         );
         void WriteEnable_SortQue(
             unsigned char* ptr_MyNumImplementedCores,
-            FLORENCE::Global* ptr_Global
+            class FLORENCE::Global* ptr_Global
         );
         void WriteEnable_Request(
             unsigned char* ptr_coreId,
             unsigned char* ptr_MyNumImplementedCores,
-            FLORENCE::Global* ptr_Global
+            class FLORENCE::Global* ptr_Global
         );
         void WriteQue_Update(
             unsigned char* ptr_MyNumImplementedCores

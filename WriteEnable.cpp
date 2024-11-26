@@ -1,34 +1,34 @@
-#include "pch.h"
+#include "WriteEnable.h"
 #include <cstddef>
 
 namespace FLORENCE
 {
-    Control_Of_WriteEnable* ptr_Control_Of_WriteEnable = NULL;
+    class Control_Of_WriteEnable* WriteEnable::ptr_Control_Of_WriteEnable = NULL;
 
     WriteEnable::WriteEnable()
     {
-
+        ptr_Control_Of_WriteEnable = NULL;
     }
 
     WriteEnable::~WriteEnable()
     {
-        delete this->ptr_Control_Of_WriteEnable;
+        delete ptr_Control_Of_WriteEnable;
     }
 
     void WriteEnable::Initialise_Control(
-        FLORENCE::Global* ptr_Global,
+        class FLORENCE::Global* ptr_Global,
         unsigned char* ptr_MyNumImplementedCores
     )
     {
-        this->ptr_Control_Of_WriteEnable = new FLORENCE::Control_Of_WriteEnable(ptr_Global, ptr_MyNumImplementedCores);
-        while (this->ptr_Control_Of_WriteEnable == NULL) { /* wait untill created */ }
+        ptr_Control_Of_WriteEnable = new FLORENCE::Control_Of_WriteEnable(ptr_Global, ptr_MyNumImplementedCores);
+        while (ptr_Control_Of_WriteEnable == NULL) { /* wait untill created */ }
     }
 
     void WriteEnable::Write_End(
-        FLORENCE::Control_Of_WriteEnable* ptr_Control_Of_WriteEnable,
+        class FLORENCE::Control_Of_WriteEnable* ptr_Control_Of_WriteEnable,
         unsigned char* ptr_coreId,
         unsigned char* ptr_MyNumImplementedCores,
-        FLORENCE::Global* ptr_Global
+        class FLORENCE::Global* ptr_Global
     )
     {
         for (unsigned char index = 0; index < 2; index++)
@@ -50,10 +50,10 @@ namespace FLORENCE
         ptr_Control_Of_WriteEnable->SetFlag_readWrite_Open(false);
     }
     void WriteEnable::Write_Start(
-        Control_Of_WriteEnable* ptr_Control_Of_WriteEnable,
+        class Control_Of_WriteEnable* ptr_Control_Of_WriteEnable,
         unsigned char* ptr_coreId,
         unsigned char* ptr_MyNumImplementedCores,
-        FLORENCE::Global* ptr_Global
+        class FLORENCE::Global* ptr_Global
     )
     {
         ptr_Control_Of_WriteEnable->WriteEnable_Request(
@@ -77,6 +77,6 @@ namespace FLORENCE
 
     Control_Of_WriteEnable* WriteEnable::Get_Control_Of_WriteEnable()
     {
-        return this->ptr_Control_Of_WriteEnable;
+        return ptr_Control_Of_WriteEnable;
     }
 }

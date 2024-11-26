@@ -10,8 +10,8 @@ namespace FLORENCE
         Praise0_Algorithm();
         virtual ~Praise0_Algorithm();
         void Do_Praise(
-            FLORENCE::Praise0_Input* ptr_In_SubSet,
-            FLORENCE::Praise0_Output* ptr_Out_SubSet
+            class FLORENCE::Praise0_Input* ptr_In_SubSet,
+            class FLORENCE::Praise0_Output* ptr_Out_SubSet
         );
 
     protected:

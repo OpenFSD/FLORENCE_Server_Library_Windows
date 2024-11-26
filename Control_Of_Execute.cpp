@@ -1,17 +1,17 @@
-#include "pch.h"
+#include "Control_Of_Execute.h"
 #include <cstddef>
 
 namespace FLORENCE
 {
-	bool flag_SystemInitialised = NULL;
-	bool flag_ThreadInitialised[4] = { NULL, NULL, NULL, NULL };//NUMBER OF CORES
+	bool Control_Of_Execute::flag_SystemInitialised = NULL;
+	bool Control_Of_Execute::flag_ThreadInitialised[4] = { NULL, NULL, NULL, NULL };//NUMBER OF CORES
 
 	Control_Of_Execute::Control_Of_Execute(unsigned char* ptr_MyNumImplementedCores)
 	{
-		this->flag_SystemInitialised = bool(true);
-		this->flag_ThreadInitialised[4] = new bool[4];
+		flag_SystemInitialised = bool(true);
+		bool flag_ThreadInitialised[4] = { bool(true), bool(true), bool(true), bool(true) };//NUMBER OF CORES
 		for (unsigned char index = 0; index < *ptr_MyNumImplementedCores; index++) {
-			this->flag_ThreadInitialised[index] = new bool(true);
+			flag_ThreadInitialised[index] = new bool(true);
 		}
 	}
 	
@@ -24,18 +24,18 @@ namespace FLORENCE
 	{
 		for (int index = 0; index < *ptr_MyNumImplementedCores; index++)
 		{
-			this->flag_SystemInitialised = false;
-			if (this->flag_ThreadInitialised[index] == true)
+			flag_SystemInitialised = false;
+			if (flag_ThreadInitialised[index] == true)
 			{
-				this->flag_SystemInitialised = true;
+				flag_SystemInitialised = true;
 			}
 		}
-		return this->flag_SystemInitialised;
+		return flag_SystemInitialised;
 	}
 
 	bool Control_Of_Execute::GetFlag_ThreadInitialised(unsigned char coreId)
 	{
-		return this->flag_ThreadInitialised[coreId];
+		return flag_ThreadInitialised[coreId];
 	}
 
 	void Control_Of_Execute::SetConditionCodeOfThisThreadedCore(unsigned char coreId)
@@ -46,6 +46,6 @@ namespace FLORENCE
 
 	void Control_Of_Execute::SetFlag_ThreadInitialised(unsigned char coreId)
 	{
-		this->flag_ThreadInitialised[coreId] = false;
+		flag_ThreadInitialised[coreId] = false;
 	}
 }

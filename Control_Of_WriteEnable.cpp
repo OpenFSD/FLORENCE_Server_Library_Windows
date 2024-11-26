@@ -1,65 +1,64 @@
-#include "pch.h"
+#include "Control_Of_WriteEnable.h"
 #include <cstddef>
 
 namespace FLORENCE
 {
-    unsigned char* ptr_coreId_For_WritePraise_Index = NULL;
-    int* ptr_count_CoreId_WriteActive[4] = { NULL, NULL, NULL, NULL };//NUMBER OF CORES
-    int* ptr_count_CoreId_WriteIdle[4] = { NULL, NULL, NULL, NULL };//NUMBER OF CORES
-    int* ptr_count_CoreId_WriteWait[4] = { NULL, NULL, NULL, NULL };//NUMBER OF CORES
-    bool flag_WriteState[4][2] = { {NULL, NULL}, {NULL, NULL}, {NULL, NULL}, {NULL, NULL} };//NUMBER OF CORES
-    unsigned char* ptr_new_coreId_For_WritePraise_Index = NULL;
-    bool praisingWrite = NULL;
-    unsigned char* ptr_que_CoreToWrite[4] = { NULL, NULL, NULL, NULL };//NUMBER OF CORES
+    unsigned char* Control_Of_WriteEnable::ptr_coreId_For_WritePraise_Index = NULL;
+    int* Control_Of_WriteEnable::ptr_count_CoreId_WriteActive[4] = { NULL, NULL, NULL, NULL };//NUMBER OF CORES
+    int* Control_Of_WriteEnable::ptr_count_CoreId_WriteIdle[4] = { NULL, NULL, NULL, NULL };//NUMBER OF CORES
+    int* Control_Of_WriteEnable::ptr_count_CoreId_WriteWait[4] = { NULL, NULL, NULL, NULL };//NUMBER OF CORES
+    bool Control_Of_WriteEnable::flag_WriteState[4][2] = { {NULL, NULL}, {NULL, NULL}, {NULL, NULL}, {NULL, NULL} };//NUMBER OF CORES
+    unsigned char* Control_Of_WriteEnable::ptr_new_coreId_For_WritePraise_Index = NULL;
+    bool Control_Of_WriteEnable::praisingWrite = NULL;
+    unsigned char* Control_Of_WriteEnable::ptr_que_CoreToWrite[4] = { NULL, NULL, NULL, NULL };//NUMBER OF CORES
 
     Control_Of_WriteEnable::Control_Of_WriteEnable(
-        FLORENCE::Global* ptr_Global,
+        class FLORENCE::Global* ptr_Global,
         unsigned char* ptr_MyNumImplementedCores
     )
     {
-        this->ptr_coreId_For_WritePraise_Index = new unsigned char(0);
-        this->ptr_count_CoreId_WriteActive[4] = new int[4];//NUMBER OF CORES
-        this->ptr_count_CoreId_WriteIdle[4] = new int[4];//NUMBER OF CORES
-        this->ptr_count_CoreId_WriteWait[4] = new int[4];//NUMBER OF CORES
-        this->flag_WriteState[4][2] = new bool[4][2];
-        this->flag_WriteState[0][0] = ptr_Global->GetConst_Write_IDLE(0);
-        this->flag_WriteState[0][1] = ptr_Global->GetConst_Write_IDLE(1);
-        this->flag_WriteState[1][0] = ptr_Global->GetConst_Write_IDLE(0);
-        this->flag_WriteState[1][1] = ptr_Global->GetConst_Write_IDLE(1);
-        this->flag_WriteState[2][0] = ptr_Global->GetConst_Write_IDLE(0);
-        this->flag_WriteState[2][1] = ptr_Global->GetConst_Write_IDLE(1);
-        this->flag_WriteState[3][0] = ptr_Global->GetConst_Write_IDLE(0);
-        this->flag_WriteState[3][1] = ptr_Global->GetConst_Write_IDLE(1);
-        this->ptr_new_coreId_For_WritePraise_Index = new unsigned char(1);
-        this->praisingWrite = new bool(false);
-        this->ptr_que_CoreToWrite[4] = new unsigned char[4];//NUMBER OF CORES
+        ptr_coreId_For_WritePraise_Index = new unsigned char(0);
+        int* ptr_count_CoreId_WriteActive[4] = { new int(0), new int(0), new int(0), new int(0) };//NUMBER OF CORES
+        int* ptr_count_CoreId_WriteIdle[4] = { new int(0), new int(0), new int(0), new int(0) };//NUMBER OF CORES
+        int* ptr_count_CoreId_WriteWait[4] = { new int(0), new int(0), new int(0), new int(0) };//NUMBER OF CORES
+        bool flag_WriteState[4][2] = { {bool(false), bool(false)}, {bool(false), bool(false)}, {bool(false), bool(false)}, {bool(false), bool(false)}};//NUMBER OF CORES
+        flag_WriteState[0][0] = ptr_Global->GetConst_Write_IDLE(0);
+        flag_WriteState[0][1] = ptr_Global->GetConst_Write_IDLE(1);
+        flag_WriteState[1][0] = ptr_Global->GetConst_Write_IDLE(0);
+        flag_WriteState[1][1] = ptr_Global->GetConst_Write_IDLE(1);
+        flag_WriteState[2][0] = ptr_Global->GetConst_Write_IDLE(0);
+        flag_WriteState[2][1] = ptr_Global->GetConst_Write_IDLE(1);
+        flag_WriteState[3][0] = ptr_Global->GetConst_Write_IDLE(0);
+        flag_WriteState[3][1] = ptr_Global->GetConst_Write_IDLE(1);
+        unsigned char* ptr_new_coreId_For_WritePraise_Index = new unsigned char(1);
+        bool praisingWrite = new bool(false);
+        unsigned char* ptr_que_CoreToWrite[4] = { new unsigned char(0), new unsigned char(1), new unsigned char(2), new unsigned char(3) };//NUMBER OF CORES
         for (unsigned char index=0; index < *ptr_MyNumImplementedCores; index++)
         {
-            this->ptr_que_CoreToWrite[index] = &index;
+            ptr_que_CoreToWrite[index] = &index;
         }
     }
 
     Control_Of_WriteEnable::~Control_Of_WriteEnable()
     {
-        delete this->ptr_coreId_For_WritePraise_Index;
-        delete this->ptr_new_coreId_For_WritePraise_Index;
+        delete ptr_coreId_For_WritePraise_Index;
+        delete ptr_new_coreId_For_WritePraise_Index;
         for (int index = 0; index < 4; index++)//NUMBER OF CORES
         {
-            delete this->ptr_count_CoreId_WriteActive[index];
-            delete this->ptr_count_CoreId_WriteIdle[index];
-            delete this->ptr_count_CoreId_WriteWait[index];
+            delete ptr_count_CoreId_WriteActive[index];
+            delete ptr_count_CoreId_WriteIdle[index];
+            delete ptr_count_CoreId_WriteWait[index];
 
-            delete this->ptr_que_CoreToWrite[index];
+            delete ptr_que_CoreToWrite[index];
             
         }
         //delete flag_WriteState[4][2];
         //delete praisingWrite;
-        delete ptr_new_coreId_For_WritePraise_Index;
     }
 
     void Control_Of_WriteEnable::WriteEnable_Activate(
         unsigned char* ptr_coreId,
-        FLORENCE::Global* ptr_Global,
+        class FLORENCE::Global* ptr_Global,
         unsigned char* ptr_MyNumImplementedCores
     )
     {
@@ -71,7 +70,7 @@ namespace FLORENCE
 
     void Control_Of_WriteEnable::WriteEnable_SortQue(
         unsigned char* ptr_MyNumImplementedCores,
-        FLORENCE::Global* ptr_Global
+        class FLORENCE::Global* ptr_Global
     )
     {
         for (unsigned char index_A = 0; index_A < *ptr_MyNumImplementedCores - 1; index_A++)
@@ -133,7 +132,7 @@ namespace FLORENCE
     void Control_Of_WriteEnable::WriteEnable_Request(
         unsigned char* ptr_coreId,
         unsigned char* ptr_MyNumImplementedCores,
-        FLORENCE::Global* ptr_Global
+        class FLORENCE::Global* ptr_Global
     )
     {
         while (GetFlag_readWrite_Open() == true)

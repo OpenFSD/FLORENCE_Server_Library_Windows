@@ -1,7 +1,6 @@
 #pragma once
-#include <vector>
-#include "Server.h"
 #include "Control_Of_ListenRespond.h"
+#include "framework.h"
 
 namespace FLORENCE
 {
@@ -16,11 +15,11 @@ namespace FLORENCE
             unsigned char* ptr_MyNumImplementedCores
         );
 
-        Control_Of_ListenRespond* Get_Control_Of_ListenRespond();
+        class Control_Of_ListenRespond* Get_Control_Of_ListenRespond();
 
     protected:
 
     private:
-        class Control_Of_ListenRespond* ptr_Control_Of_ListenRespond;
+        static class Control_Of_ListenRespond* ptr_Control_Of_ListenRespond;
     };
 }

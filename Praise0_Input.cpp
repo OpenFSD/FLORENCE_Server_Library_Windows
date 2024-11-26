@@ -1,4 +1,4 @@
-#include "pch.h"
+#include "Praise0_Input.h"
 
 namespace FLORENCE
 {
@@ -7,8 +7,8 @@ namespace FLORENCE
 
 	Praise0_Input::Praise0_Input()
 	{
-		bool a = bool(false);
-		bool b = bool(false);
+		a = bool(false);
+		b = bool(false);
 	}
 
 	Praise0_Input::~Praise0_Input()

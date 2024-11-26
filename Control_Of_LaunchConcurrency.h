@@ -8,20 +8,20 @@ namespace FLORENCE
     {
     public:
         Control_Of_LaunchConcurrency(
-            FLORENCE::Global* ptr_Global,
+            class FLORENCE::Global* ptr_Global,
             unsigned char* ptr_NumImplementedCores
         );
         virtual ~Control_Of_LaunchConcurrency();
 
         void LaunchEnable_Activate(
-            FLORENCE::Global* ptr_Global
+            class FLORENCE::Global* ptr_Global
         );
         void LaunchEnable_Request(
             unsigned char* concurrent_CoreId,
-            FLORENCE::Global* ptr_Global
+            class FLORENCE::Global* ptr_Global
         );
         void LaunchEnable_SortQue(
-            FLORENCE::Global* ptr_Global,
+            class FLORENCE::Global* ptr_Global,
             unsigned char* ptr_NumImplementedCores
         );
         void LaunchQue_Update(

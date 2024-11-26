@@ -1,24 +1,24 @@
-#include "pch.h"
+#include "LaunchConcurrency.h"
 #include <cstddef>
 
 namespace FLORENCE
 {
-    Control_Of_LaunchConcurrency* ptr_Control_Of_LaunchConcurrency = NULL;
+    class Control_Of_LaunchConcurrency* LaunchConcurrency::ptr_Control_Of_LaunchConcurrency = NULL;
 
     LaunchConcurrency::LaunchConcurrency()
     {
-        this->ptr_Control_Of_LaunchConcurrency = NULL;
+        ptr_Control_Of_LaunchConcurrency = NULL;
     }
 
     LaunchConcurrency::~LaunchConcurrency()
     {
-        delete this->ptr_Control_Of_LaunchConcurrency;
+        delete ptr_Control_Of_LaunchConcurrency;
     }
 
     void LaunchConcurrency::Concurrent_Thread_Start(
-        FLORENCE::Control_Of_LaunchConcurrency* ptr_Control_Of_LaunchConcurrency,
+        class FLORENCE::Control_Of_LaunchConcurrency* ptr_Control_Of_LaunchConcurrency,
         unsigned char* ptr_concurrent_CoreId,
-        FLORENCE::Global* ptr_Global,
+        class FLORENCE::Global* ptr_Global,
         unsigned char* ptr_NumImplementedCores
     )
     {
@@ -32,18 +32,18 @@ namespace FLORENCE
     }
 
     void LaunchConcurrency::Initialise_Control(
-        FLORENCE::Global* ptr_Global,
+        class FLORENCE::Global* ptr_Global,
         unsigned char* ptr_MyNumImplementedCores
     )
     {
-        this->ptr_Control_Of_LaunchConcurrency = new FLORENCE::Control_Of_LaunchConcurrency(ptr_Global, ptr_MyNumImplementedCores);
-        while (this->ptr_Control_Of_LaunchConcurrency == NULL) { /* wait untill created */ }
+        ptr_Control_Of_LaunchConcurrency = new class FLORENCE::Control_Of_LaunchConcurrency(ptr_Global, ptr_MyNumImplementedCores);
+        while (ptr_Control_Of_LaunchConcurrency == NULL) { /* wait untill created */ }
     }
 
     void LaunchConcurrency::Thread_End(
-        FLORENCE::Control_Of_LaunchConcurrency* ptr_Control_Of_LaunchConcurrency,
+        class FLORENCE::Control_Of_LaunchConcurrency* ptr_Control_Of_LaunchConcurrency,
         unsigned char* ptr_concurrent_CoreId,
-        FLORENCE::Global* ptr_Global
+        class FLORENCE::Global* ptr_Global
     )
     {
         while (ptr_Control_Of_LaunchConcurrency->GetFlag_PraisingLaunch() == true)
@@ -73,8 +73,8 @@ namespace FLORENCE
         }
     }
 
-    Control_Of_LaunchConcurrency* LaunchConcurrency::Get_Control_Of_LaunchConcurrency()
+    class Control_Of_LaunchConcurrency* LaunchConcurrency::Get_Control_Of_LaunchConcurrency()
     {
-        return this->ptr_Control_Of_LaunchConcurrency;
+        return ptr_Control_Of_LaunchConcurrency;
     }
 }

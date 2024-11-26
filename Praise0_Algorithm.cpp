@@ -1,4 +1,4 @@
-#include "pch.h"
+#include "Praise0_Algorithm.h"
 #include <cstddef>
 
 namespace FLORENCE
@@ -12,8 +12,8 @@ namespace FLORENCE
     }
 
     void Praise0_Algorithm::Do_Praise(
-        FLORENCE::Praise0_Input* ptr_In_SubSet,
-        FLORENCE::Praise0_Output* ptr_Out_SubSet
+        class FLORENCE::Praise0_Input* ptr_In_SubSet,
+        class FLORENCE::Praise0_Output* ptr_Out_SubSet
     )
     {
         bool result = false;

@@ -1,24 +1,28 @@
-#include "pch.h"
+#include "Algorithms.h"
 #include <cstddef>
 
 namespace FLORENCE
 {
-    Concurrent** ptr_Concurrent_Array = NULL;
-    Concurrent* ptr_Concurrent[3] = { NULL, NULL, NULL };
-    ListenRespond* ptr_ListenRespond = NULL;
-    Concurrent* ptr_New_Concurrent = NULL;
+    class Concurrent** Algorithms::ptr_Concurrent_Array = NULL;
+    class Concurrent* Algorithms::ptr_Concurrent[3] = { NULL, NULL, NULL };
+    class ListenRespond* Algorithms::ptr_ListenRespond = NULL;
+    class Concurrent* Algorithms::ptr_New_Concurrent = NULL;
 //===
 //===
-    Praise0_Algorithm* ptr_Praise0_Algorithm = NULL;
+    class Praise0_Algorithm* Algorithms::ptr_Praise0_Algorithm = NULL;
 //===
 //===
 
     Algorithms::Algorithms()
     {
+        ptr_Concurrent[0] = new class FLORENCE::Concurrent();
+        ptr_Concurrent[1] = new class FLORENCE::Concurrent();
+        ptr_Concurrent[2] = new class FLORENCE::Concurrent();//NUMBER OF CONCURRENT CORES
+        ptr_Concurrent_Array = ptr_Concurrent;
 //===
 //===
-        this->ptr_Praise0_Algorithm = new Praise0_Algorithm();
-        while (this->ptr_Praise0_Algorithm == NULL) { /* wait untill class constructed */ }
+        ptr_Praise0_Algorithm = new class FLORENCE::Praise0_Algorithm();
+        while (ptr_Praise0_Algorithm == NULL) { /* wait untill class constructed */ }
 //===
 //===
     }
@@ -27,48 +31,47 @@ namespace FLORENCE
     {
         for (int index = 0; index < 3; index++)//NUMBER OF CONCURRENT CORES
         {
-            delete this->ptr_Concurrent[index];
+            delete ptr_Concurrent[index];
         }
-        delete this->ptr_Concurrent_Array;
-        delete this->ptr_ListenRespond;
-        delete this->ptr_Praise0_Algorithm;
+        delete ptr_Concurrent_Array;
+        delete ptr_ListenRespond;
+        delete ptr_Praise0_Algorithm;
     }
 
     void Algorithms::Initialise(unsigned char* ptr_NumberOfImplementedCores)
     {
-        this->ptr_New_Concurrent = new Concurrent();
-        while (this->ptr_New_Concurrent == NULL) { /* wait untill created */ }
-        this->ptr_New_Concurrent->Initialise_Control();
+        ptr_New_Concurrent = new class FLORENCE::Concurrent();
+        while (ptr_New_Concurrent == NULL) { /* wait untill created */ }
+        ptr_New_Concurrent->Initialise_Control();
 
-        this->ptr_Concurrent[3] = new Concurrent[3];//NUMBER OF CONCURRENT CORES
         for (unsigned char index = 0; index < *ptr_NumberOfImplementedCores - 1; index++)
         {
-            this->ptr_Concurrent[index] = this->ptr_New_Concurrent;
+            ptr_Concurrent[index] = ptr_New_Concurrent;
         }
-        delete this->ptr_New_Concurrent;
-        this->ptr_Concurrent_Array = this->ptr_Concurrent;
-        while (this->ptr_Concurrent_Array == NULL) { /* wait untill class constructed */ }
+        delete ptr_New_Concurrent;
+        ptr_Concurrent_Array = ptr_Concurrent;
+        while (ptr_Concurrent_Array == NULL) { /* wait untill class constructed */ }
 
-        this->ptr_ListenRespond = new ListenRespond();
-        while (this->ptr_ListenRespond == NULL) { /* wait untill class constructed */ }
-        this->ptr_ListenRespond->Initialise_Control();
+        ptr_ListenRespond = new class FLORENCE::ListenRespond();
+        while (ptr_ListenRespond == NULL) { /* wait untill class constructed */ }
+        ptr_ListenRespond->Initialise_Control();
     }
 
-    Concurrent* Algorithms::Get_Concurren_Array(int concurrent_coreId)
+    class Concurrent* Algorithms::Get_Concurren_Array(int concurrent_coreId)
     {
-        return this->ptr_Concurrent[concurrent_coreId];
+        return ptr_Concurrent[concurrent_coreId];
     }
 
-    ListenRespond* Algorithms::Get_ListenRespond()
+    class ListenRespond* Algorithms::Get_ListenRespond()
     {
-        return this->ptr_ListenRespond;
+        return ptr_ListenRespond;
     }
 
 //===
 //===
-    Praise0_Algorithm* Algorithms::Get_Praise0_Algorithm()
+    class Praise0_Algorithm* Algorithms::Get_Praise0_Algorithm()
     {
-        return this->ptr_Praise0_Algorithm;
+        return ptr_Praise0_Algorithm;
     }
 //===
 //===

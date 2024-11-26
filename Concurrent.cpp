@@ -1,38 +1,33 @@
-#include "pch.h"
+#include "Concurrent.h"
 #include <cstddef>
-
 
 namespace FLORENCE
 {
-    Control_Of_Concurrent* ptr_Control_Of_Concurrent = NULL;
-    Praise0_Algorithm* ptr_Algorithms_Subset = NULL;//TODO CLASS T
+    class Control_Of_Concurrent* Concurrent::ptr_Control_Of_Concurrent = NULL;
+    class Praise0_Algorithm* Concurrent::ptr_Algorithms_Subset = NULL;//TODO CLASS T
 
     Concurrent::Concurrent()
     {
-        this->ptr_Control_Of_Concurrent = NULL;
+        ptr_Control_Of_Concurrent = NULL;
 
-        this->ptr_Algorithms_Subset = new Praise0_Algorithm();//TODO CLASS T
-        while (this->ptr_Algorithms_Subset == NULL) { /* wait untill class constructed */ }
+        ptr_Algorithms_Subset = new class FLORENCE::Praise0_Algorithm();//TODO CLASS T
+        while (ptr_Algorithms_Subset == NULL) { /* wait untill class constructed */ }
     }
 
     Concurrent::~Concurrent()
     {
-        delete this->ptr_Control_Of_Concurrent;
-        delete this->ptr_Algorithms_Subset;
+        delete ptr_Control_Of_Concurrent;
+        delete ptr_Algorithms_Subset;
     }
 
     void Concurrent::Initialise_Control()
     {
-        this->ptr_Control_Of_Concurrent = new Control_Of_Concurrent();
-        while (this->ptr_Control_Of_Concurrent == NULL) { /* wait untill class constructed */ }
+        ptr_Control_Of_Concurrent = new class FLORENCE::Control_Of_Concurrent();
+        while (ptr_Control_Of_Concurrent == NULL) { /* wait untill class constructed */ }
     }
 
-    void Concurrent::Thread_Concurrency(
-        unsigned char concurrent_coreId,
-        unsigned char* ptr_MyNumImplementedCores
-    )
+    void Concurrent::Thread_Concurrency(unsigned char concurrent_coreId, unsigned char* ptr_MyNumImplementedCores)
     {
-        //FLORENCE::Server* FLORENCE::framework::Get_Server() = FLORENCE::framework::Get_Server();
         FLORENCE::framework::Get_Server()->Get_Execute()->Get_Control_Of_Execute()->SetConditionCodeOfThisThreadedCore(concurrent_coreId);
         while (FLORENCE::framework::Get_Server()->Get_Execute()->Get_Control_Of_Execute()->GetFlag_SystemInitialised(ptr_MyNumImplementedCores) != false)
         {
@@ -119,9 +114,9 @@ namespace FLORENCE
 
     void  Concurrent::Do_Concurrent_Algorithm_For_PraiseEventId(
         int* ptr_praiseEventId,
-        Praise0_Algorithm* ptr_Algorithm_Subset,
-        FLORENCE::Praise0_Input* ptr_Input_Subset,
-        FLORENCE::Praise0_Output* ptr_Output_Subset
+        class FLORENCE::Praise0_Algorithm* ptr_Algorithm_Subset,
+        class FLORENCE::Praise0_Input* ptr_Input_Subset,
+        class FLORENCE::Praise0_Output* ptr_Output_Subset
     )
     {
         ptr_Algorithm_Subset->Do_Praise(
@@ -131,16 +126,16 @@ namespace FLORENCE
     }
     class Praise0_Algorithm* Concurrent::Get_Algorithm_Subset()
     {
-        return this->ptr_Algorithms_Subset;
+        return ptr_Algorithms_Subset;
     }
 
     class Control_Of_Concurrent* Concurrent::Get_Control_Of_Concurrent()
     {
-        return this->ptr_Control_Of_Concurrent;
+        return ptr_Control_Of_Concurrent;
     }
 
-    void Concurrent::Set_Algorithm_Subset(Praise0_Algorithm* value_algorithm)
+    void Concurrent::Set_Algorithm_Subset(class FLORENCE::Praise0_Algorithm* value_algorithm)
     {
-        this->ptr_Algorithms_Subset = value_algorithm;
+        ptr_Algorithms_Subset = value_algorithm;
     }
 }

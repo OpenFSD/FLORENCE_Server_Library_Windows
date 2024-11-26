@@ -1,6 +1,4 @@
-# FLORENCE in CMAKE
-
-## Debuging Errors
+# FLORENCE Server Library (Windows)
 
 
 ## Server and Buffer, For Full Stack Development
@@ -19,24 +17,9 @@ Version: 22H2
 Version 17.10.5
 
 ## Dependencies
- - VALVE GameNetworkingSockets
-https://github.com/ValveSoftware/GameNetworkingSockets
-
- - .NET
-
+### C++
    
 ## Development History
-FLORENCE_Template-For_Server
-https://github.com/OpenFSD/FLORENCE_Template-For_Server
+### WriteEnableWait
 
-FLORENCE_Cpp_SudoCode_in_Csharp
-https://github.com/OpenFSD/FLORENCE_Cpp_SudoCode_in_Csharp
-
-FLORENCE_TestBench_SERVER_cpp
-https://github.com/OpenFSD/FLORENCE_TestBench_SERVER_cpp
-
-FLORENCE_Server_Cpp
-https://github.com/OpenFSD/FLORENCE_Server_Cpp
-
-FLORENCE_Server_CMAKE
-https://github.com/OpenFSD/FLORENCE_Server_CMAKE
+###ConcurrentQueLauncher

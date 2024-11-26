@@ -1,9 +1,9 @@
-#include "pch.h"
+#include "ListenRespond.h"
 #include <cstddef>
 
 namespace FLORENCE
 {
-    Control_Of_ListenRespond* ptr_Control_Of_ListenRespond = NULL;
+    class Control_Of_ListenRespond* ListenRespond::ptr_Control_Of_ListenRespond = NULL;
 
     ListenRespond::ListenRespond()
     {
@@ -26,7 +26,6 @@ namespace FLORENCE
         unsigned char* ptr_MyNumImplementedCores
     )
     {
-        //FLORENCE::Server* FLORENCE::framework::Get_Server() = FLORENCE::framework::Get_Server();
         FLORENCE::framework::Get_Server()->Get_Execute()->Get_Control_Of_Execute()->SetConditionCodeOfThisThreadedCore(coreId);
         while (FLORENCE::framework::Get_Server()->Get_Execute()->Get_Control_Of_Execute()->GetFlag_SystemInitialised(ptr_MyNumImplementedCores) != false)
         {
@@ -121,7 +120,7 @@ namespace FLORENCE
         }
     }
 
-    Control_Of_ListenRespond* ListenRespond::Get_Control_Of_ListenRespond()
+    class Control_Of_ListenRespond* ListenRespond::Get_Control_Of_ListenRespond()
     {
         return this->ptr_Control_Of_ListenRespond;
     }

@@ -20,8 +20,8 @@ namespace FLORENCE
     protected:
 
     private:
-        class Control_Of_Input* ptr_Control_Of_Input;
-        class Praise0_Input* ptr_praiseInputBuffer_Subset;//TODO CLASS T
+        static class Control_Of_Input* ptr_Control_Of_Input;
+        static class Praise0_Input* ptr_praiseInputBuffer_Subset;//TODO CLASS T
         static int* ptr_in_praiseEventId;
 
     };

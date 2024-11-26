@@ -1,14 +1,14 @@
-#include "pch.h"
+#include "Control_Of_Data.h"
 
 namespace FLORENCE
 {
-    bool flag_InputStackLoaded = false;
-    bool flag_OutputStackLoaded = false;
+    bool Control_Of_Data::flag_InputStackLoaded = false;
+    bool Control_Of_Data::flag_OutputStackLoaded = false;
 
     Control_Of_Data::Control_Of_Data()
     {
-        this->flag_InputStackLoaded = bool(false);
-        this->flag_OutputStackLoaded = bool(false);
+        flag_InputStackLoaded = bool(false);
+        flag_OutputStackLoaded = bool(false);
     }
     Control_Of_Data::~Control_Of_Data()
     {
@@ -81,16 +81,16 @@ namespace FLORENCE
     }
     bool Control_Of_Data::GetFlag_OutputStackLoaded()
     {
-        return this->flag_OutputStackLoaded;
+        return flag_OutputStackLoaded;
     }
 
 
     void Control_Of_Data::SetFlag_InputStackLoaded(bool value)
     {
-        this->flag_InputStackLoaded = value;
+        flag_InputStackLoaded = value;
     }
     void Control_Of_Data::SetFlag_OutputStackLoaded(bool value)
     {
-        this->flag_OutputStackLoaded = value;
+        flag_OutputStackLoaded = value;
     }
 }

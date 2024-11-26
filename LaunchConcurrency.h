@@ -11,26 +11,26 @@ namespace FLORENCE
         virtual ~LaunchConcurrency();
 
         void Concurrent_Thread_Start(
-            Control_Of_LaunchConcurrency* ptr_Control_Of_LaunchConcurrency,
+            class Control_Of_LaunchConcurrency* ptr_Control_Of_LaunchConcurrency,
             unsigned char* ptr_concurrent_CoreId,
-            Global* ptr_Global,
+            class Global* ptr_Global,
             unsigned char* ptr_NumImplementedCores
 
         );
         void Initialise_Control(
-            Global* ptr_Global,
+            class Global* ptr_Global,
             unsigned char* ptr_MyNumImplementedCores
         );
         void Thread_End(
-            Control_Of_LaunchConcurrency* ptr_Control_Of_LaunchConcurrency,
+            class Control_Of_LaunchConcurrency* ptr_Control_Of_LaunchConcurrency,
             unsigned char* ptr_concurrent_CoreId,
-            Global* ptr_Global
+            class Global* ptr_Global
         );
-        Control_Of_LaunchConcurrency* Get_Control_Of_LaunchConcurrency();
+        class Control_Of_LaunchConcurrency* Get_Control_Of_LaunchConcurrency();
 
     protected:
 
     private:
-        class Control_Of_LaunchConcurrency* ptr_Control_Of_LaunchConcurrency;
+        static class Control_Of_LaunchConcurrency* ptr_Control_Of_LaunchConcurrency;
     };
 }

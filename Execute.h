@@ -5,6 +5,7 @@
 #include "Global.h"
 #include "LaunchConcurrency.h"
 #include "WriteEnable.h"
+#include "framework.h"
 
 namespace FLORENCE
 {
@@ -29,9 +30,9 @@ namespace FLORENCE
     protected:
 
     private:
-        class Control_Of_Execute* ptr_Control_Of_Execute;
-        class LaunchConcurrency* ptr_LaunchConcurrency;
-        std::thread* ptr_Thread_WithCoreId[4];//NUMBER OF CORES
-        class WriteEnable* ptr_WriteEnable;
+        static class Control_Of_Execute* ptr_Control_Of_Execute;
+        static class LaunchConcurrency* ptr_LaunchConcurrency;
+        static std::thread* ptr_Thread_WithCoreId[4];//NUMBER OF CORES
+        static class WriteEnable* ptr_WriteEnable;
     };
 }
