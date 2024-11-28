@@ -167,8 +167,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />
-    <None Include="ServerLibrary.vcxproj" />
-    <None Include="ServerLibrary.vcxproj.filters" />
-    <None Include="ServerLibrary.vcxproj.user" />
+    <None Include="StaticServer.sln" />
   </ItemGroup>
 </Project>

@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{5c388287-291f-413e-b724-4aa73260f7b5}</ProjectGuid>
+    <ProjectGuid>{3bf05465-eef8-41b7-a46f-b450b1e2a5c4}</ProjectGuid>
     <RootNamespace>FLORENCEServerLibraryWindows</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -187,9 +187,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />
-    <None Include="ServerLibrary.vcxproj" />
-    <None Include="ServerLibrary.vcxproj.filters" />
-    <None Include="ServerLibrary.vcxproj.user" />
+    <None Include="StaticServer.sln" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
