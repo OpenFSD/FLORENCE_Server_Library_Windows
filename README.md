@@ -1,10 +1,10 @@
-# FLORENCE Server Library (Windows)
+# FLORENCE Server Assembly (Windows)
 
 
-## Server and Buffer, For Full Stack Development
+## Server, Buffer and Networking For Full Stack Development
 FLORENCE - Architecture.PNG => https://drive.google.com/file/d/1AzNi2YrukRCVLelxfj8uvzhFDI4ytWBs/view?usp=sharing
 
-### C++ Static Library
+### C# .NET Console
 
 
 ### Using Windows 10
@@ -17,9 +17,9 @@ Version: 22H2
 Version 17.10.5
 
 ## Dependencies
-### C++
+### FLORENCE Server Library Windows
+#### WriteEnableWait
+#### ConcurrentQueLauncher
+
    
 ## Development History
-### WriteEnableWait
-
-### ConcurrentQueLauncher
